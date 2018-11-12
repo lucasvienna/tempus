@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="made with love by dartdoc 0.20.1">
+  <meta name="description" content="better_moment API docs, for the Dart programming language.">
+  <title>better_moment - Dart API docs</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link rel="stylesheet" href="static-assets/github.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+</head>
+
+<body>
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://github.com/Avyiel/better_moment">better_moment package</a></li>
+  </ol>
+  <div class="self-name">better_moment</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <h5><span class="package-name">better_moment</span> <span class="package-kind">package</span></h5>
+    <ol>
+          <li class="section-title">Libraries</li>
+          <li><a href="better_moment/better_moment-library.html">better_moment</a></li>
+    </ol>
+  </div>
+
+  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
+      <section class="desc markdown">
+        <h1>better_moment <a href="https://travis-ci.org/Avyiel/better_moment"><img alt="Build Status" src="https://travis-ci.org/Avyiel/better_moment.svg?branch=master"></a></h1>
+<p>An implementation of some Moment.js features for parsing, manipulates and displaying dates in Dart.</p>
+<h2>Usage</h2>
+<p>A simple usage example:</p>
+<pre class="language-dart"><code class="language-dart">import 'package:better_moment/better_moment.dart';
+
+main() {
+    Duration secondsToAdd = new Duration(seconds: 10);
+    DateTime dateForComparison = new DateTime.now().add(secondsToAdd);
+    Moment moment = new Moment.now();
+
+    // should print "in a few seconds"
+    print(moment.from(dateForComparison));
+}
+</code></pre>
+<h2>Locales</h2>
+<h3>Set the locale for all usages of <code>Moment</code>:</h3>
+<pre class="language-dart"><code class="language-dart">Moment.globalLocale(new LocaleDE());
+</code></pre>
+<h3>Set the locale only for the current instance of <code>Moment</code>:</h3>
+<pre class="language-dart"><code class="language-dart">Moment moment = new Moment.now().locale(new LocaleDE());
+</code></pre>
+<h3>Adding your own locale:</h3>
+<p>Just create a class that implements <code>ILocale</code> and assign that to your <code>Moment</code> instance or set it globally.</p>
+<h3>Overwriting existing locales:</h3>
+<pre class="language-dart"><code class="language-dart">class ShortLocaleEn extends LocaleEN {
+  String get seconds =&gt; '%is';
+
+  String get aMinute =&gt; '%im';
+  String get minutes =&gt; '%im';
+
+  String get anHour =&gt; '%ih';
+  String get hours =&gt; '%ih';
+
+  String get aDay =&gt; '%id';
+  String get days =&gt; '%id';
+}
+</code></pre>
+<h2>Features and bugs</h2>
+<p>Please file feature requests and bugs at the <a href="https://github.com/Avyiel/better_moment/issues">issue tracker</a>.</p>
+<h2>Credits</h2>
+<p>This package draws inspiration and code from <a href="https://github.com/rinukkusu/simple_moment">rinukkusu/simple_moment</a> and <a href="https://github.com/apptreesoftware/date_utils">apptreesoftware/date_utils</a>.</p>
+      </section>
+      
+        <section class="summary">
+            <h2>Libraries</h2>
+          <dl>
+            <dt id="better_moment">
+              <span class="name"><a href="better_moment/better_moment-library.html">better_moment</a></span>
+            </dt>
+            <dd>
+              
+            </dd>          </dl>
+        </section>
+
+  </div> <!-- /.main-content -->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    better_moment 0.1.0
+  </span>
+
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="static-assets/typeahead.bundle.min.js"></script>
+<script src="static-assets/highlight.pack.js"></script>
+<script src="static-assets/URI.js"></script>
+<script src="static-assets/script.js"></script>
+
+
+</body>
+
+</html>

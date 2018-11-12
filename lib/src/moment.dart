@@ -66,7 +66,7 @@ class Moment {
   }
 
   /// Returns a [String] with the different between [this] and [Moment.now()]. Takes an optional
-  /// [boolean] argument to decide whether to use an identifier. [withoutPrefixOrSuffix] defaults
+  /// [bool] argument to decide whether to use an identifier. [withoutPrefixOrSuffix] defaults
   /// to [false].
   ///
   /// ```
@@ -84,7 +84,7 @@ class Moment {
     return from(new Moment(), withoutPrefixOrSuffix);
   }
 
-  /// Returns a [String] with the different between [this] and [moment]. Takes an optional [boolean]
+  /// Returns a [String] with the different between [this] and [moment]. Takes an optional [bool]
   /// argument to decide whether to use an identifier. [withoutPrefixOrSuffix] defaults to [false].
   ///
   /// ```
