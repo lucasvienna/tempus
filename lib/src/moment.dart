@@ -84,7 +84,7 @@ class Moment {
     return from(new Moment(), withoutPrefixOrSuffix);
   }
 
-  /// Returns a [String] with the different between [this] and [date]. Takes an optional [boolean]
+  /// Returns a [String] with the different between [this] and [moment]. Takes an optional [boolean]
   /// argument to decide whether to use an identifier. [withoutPrefixOrSuffix] defaults to [false].
   ///
   /// ```
@@ -98,8 +98,8 @@ class Moment {
   /// String difference = berlinWallFell.from(dDay, false);
   /// assert(difference == '46 years');
   /// ```
-  String from(Moment date, [bool withoutPrefixOrSuffix = false]) {
-    Duration diff = date._date.difference(_date);
+  String from(Moment moment, [bool withoutPrefixOrSuffix = false]) {
+    Duration diff = moment._date.difference(_date);
 
     String timeString = '';
 
@@ -143,6 +143,9 @@ class Moment {
 
     return timeString;
   }
+
+  /// Returns the inner [DateTime].
+  DateTime date() => this._date;
 
   /// Retuns a human-readable [String] for this instance.
   ///
