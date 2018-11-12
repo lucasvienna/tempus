@@ -62,7 +62,7 @@ class Moment {
   /// the instance's locale and then returns the new value.
   ILocale locale([ILocale locale = null]) {
     if (locale != null && locale is ILocale) _locale = locale;
-    return _locale;
+    return _getLocale();
   }
 
   /// Returns a [String] with the different between [this] and [Moment.now()]. Takes an optional
