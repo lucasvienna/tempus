@@ -3,11 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:better_moment/better_moment.dart';
 
 void main() {
-  test('adds one to input values', () {
-    final calculator = new Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
-    expect(() => calculator.addOne(null), throwsNoSuchMethodError);
+  test('from', () {
+    var berlinWallFell = Moment.parse('19891109');
+    var dDay = Moment.parse('19440606');
+    String difference = berlinWallFell.from(dDay);
+    expect(difference, equals('46 years ago'));
   });
 }
