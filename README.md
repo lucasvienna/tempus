@@ -9,9 +9,9 @@ A simple usage example:
 import 'package:better_moment/better_moment.dart';
 
 main() {
-    var secondsToAdd = new Duration(seconds: 10);
-    var dateForComparison = new DateTime.now().add(secondsToAdd);
-    var moment = new Moment.now();
+    Duration secondsToAdd = new Duration(seconds: 10);
+    DateTime dateForComparison = new DateTime.now().add(secondsToAdd);
+    Moment moment = new Moment.now();
 
     // should print "in a few seconds"
     print(moment.from(dateForComparison));
@@ -29,7 +29,7 @@ Moment.globalLocale(new LocaleDE());
 ### Set the locale only for the current instance of `Moment`:
 
 ```dart
-var moment = new Moment.now().locale(new LocaleDE());
+Moment moment = new Moment.now().locale(new LocaleDE());
 ```
 
 ### Adding your own locale:
@@ -40,7 +40,7 @@ Just create a class that implements `ILocale` and assign that to your `Moment` i
 ### Overwriting existing locales:
 
 ```dart
-class ShortLocaleEn extends LocaleEn {
+class ShortLocaleEn extends LocaleEN {
   String get seconds => '%is';
 
   String get aMinute => '%im';
@@ -60,6 +60,6 @@ Please file feature requests and bugs at the [issue tracker][tracker].
 
 [tracker]: https://github.com/Avyiel/better_moment/issues
 
-## Notes
+## Credits
 
-This package uses source code from [rinukkusu/simple_moment](https://github.com/rinukkusu/simple_moment) and [apptreesoftware/date_utils](https://github.com/apptreesoftware/date_utils). Any code forked from these repositories is released under their respective licenses.
+This package draws inspiration and code from [rinukkusu/simple_moment](https://github.com/rinukkusu/simple_moment) and [apptreesoftware/date_utils](https://github.com/apptreesoftware/date_utils).
