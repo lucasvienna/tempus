@@ -1,7 +1,7 @@
 name: better_moment
 description: A port of the Moment.js library for easy time manipulation in Dart.
 version: 0.1.0
-author: Avyiel <lmvienna@outlook.com>
+author: Lucas Vienna <lmvienna@outlook.com>
 homepage: https://github.com/Avyiel/better_moment
 
 environment:
