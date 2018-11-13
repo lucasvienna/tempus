@@ -1,4 +1,4 @@
-# better_moment [![Pub](https://img.shields.io/pub/v/better_moment.svg)](https://pub.dartlang.org/packages/better_moment)[![Build Status](https://travis-ci.org/Avyiel/better_moment.svg?branch=master)](https://travis-ci.org/Avyiel/better_moment)
+# better_moment [![Pub](https://img.shields.io/pub/v/better_moment.svg)](https://pub.dartlang.org/packages/better_moment) [![Build Status](https://travis-ci.org/Avyiel/better_moment.svg?branch=master)](https://travis-ci.org/Avyiel/better_moment)
 An implementation of some Moment.js features for parsing, manipulates and displaying dates in Dart.
 
 ## Usage
