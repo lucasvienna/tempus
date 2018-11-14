@@ -1,4 +1,4 @@
-# better_moment [![Pub](https://img.shields.io/pub/v/better_moment.svg)](https://pub.dartlang.org/packages/better_moment) [![Build Status](https://travis-ci.org/Avyiel/better_moment.svg?branch=master)](https://travis-ci.org/Avyiel/better_moment)
+# tempus [![Pub](https://img.shields.io/pub/v/tempus.svg)](https://pub.dartlang.org/packages/tempus) [![Build Status](https://travis-ci.org/Avyiel/tempus.svg?branch=master)](https://travis-ci.org/Avyiel/tempus)
 An implementation of some Moment.js features for parsing, manipulates and displaying dates in Dart.
 
 ## Usage
@@ -6,35 +6,40 @@ An implementation of some Moment.js features for parsing, manipulates and displa
 A simple usage example:
 
 ```dart
-import 'package:better_moment/better_moment.dart';
+import 'package:tempus/tempus.dart';
 
 main() {
     Duration secondsToAdd = new Duration(seconds: 10);
     DateTime dateForComparison = new DateTime.now().add(secondsToAdd);
-    Moment moment = new Moment.now();
+    Tempus tempus = new Tempus();
 
-    // should print "in a few seconds"
-    print(moment.from(dateForComparison));
+    // Will print "in a few seconds"
+    print(tempus.from(dateForComparison));
+
+    DateTime randomDate = new DateTime(2018, 10);
+    // Will generate a list with 42 DateTimes, perfect for creating
+    // calendar grids. By default starts on Sunday, can be Monday.
+    List<DateTime> dateGrid = Tempus.datesInMonthGrid(randomDate, true);
 }
 ```
 
 ## Locales
 
-### Set the locale for all usages of `Moment`:
+### Set the locale for all usages of `Tempus`:
 
 ```dart
-Moment.globalLocale(new LocaleDE());
+Tempus.globalLocale(new LocaleDE());
 ```
 
-### Set the locale only for the current instance of `Moment`:
+### Set the locale only for the current instance of `Tempus`:
 
 ```dart
-Moment moment = new Moment.now().locale(new LocaleDE());
+Tempus tempus = new Tempus.now().locale(new LocaleDE());
 ```
 
 ### Adding your own locale:
 
-Just create a class that implements `ILocale` and assign that to your `Moment` instance or set it globally.
+Just create a class that implements `ILocale` and assign that to your `Tempus` instance or set it globally.
 
 
 ### Overwriting existing locales:
@@ -58,8 +63,8 @@ class ShortLocaleEn extends LocaleEN {
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: https://github.com/Avyiel/better_moment/issues
+[tracker]: https://github.com/Avyiel/tempus/issues
 
 ## Credits
 
-This package draws inspiration and code from [rinukkusu/simple_moment](https://github.com/rinukkusu/simple_moment) and [apptreesoftware/date_utils](https://github.com/apptreesoftware/date_utils).
+This package draws inspiration and code from [rinukkusu/simple_tempus](https://github.com/rinukkusu/simple_tempus) and [apptreesoftware/date_utils](https://github.com/apptreesoftware/date_utils).
