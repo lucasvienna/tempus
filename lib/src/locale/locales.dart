@@ -23,29 +23,38 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import 'package:tempus/src/locale/locales.dart';
+export 'locales/de.dart';
+export 'locales/en.dart';
+export 'locales/es.dart';
+export 'locales/pt.dart';
 
-class LocaleDE implements ILocale {
-  String get seconds => 'einigen Sekunden';
+abstract class ILocale {
+  String get seconds;
 
-  String get aMinute => 'einer Minute';
-  String get minutes => '%i Minuten';
+  String get aMinute;
+  String get minutes;
 
-  String get anHour => 'einer Stunde';
-  String get hours => '%i Stunden';
+  String get anHour;
+  String get hours;
 
-  String get aDay => 'einem Tag';
-  String get days => '%i Tagen';
+  String get aDay;
+  String get days;
 
-  String get aMonth => 'einem Monat';
-  String get months => '%i Monaten';
+  String get aMonth;
+  String get months;
 
-  String get aYear => 'einem Jahr';
-  String get years => '%i Jahren';
+  String get aYear;
+  String get years;
 
-  String get futureIdentifier => 'in';
-  String get pastIdentifier => 'vor';
+  String get futureIdentifier;
+  String get pastIdentifier;
 
-  IdentifierPosition get futurePosition => IdentifierPosition.prepend;
-  IdentifierPosition get pastPosition => IdentifierPosition.prepend;
+  IdentifierPosition get futurePosition;
+  IdentifierPosition get pastPosition;
+}
+
+enum IdentifierPosition {
+  prepend,
+  append,
+  dontDisplay
 }

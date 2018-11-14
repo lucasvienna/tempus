@@ -1,4 +1,4 @@
-import 'package:better_moment/src/locale/locale.dart';
+import 'package:tempus/src/locale/locales.dart';
 
 class LocalePT implements ILocale {
   String get seconds => 'alguns segundos';
