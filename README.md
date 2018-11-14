@@ -67,4 +67,4 @@ Please file feature requests and bugs at the [issue tracker][tracker].
 
 ## Credits
 
-This package draws inspiration and code from [rinukkusu/simple_tempus](https://github.com/rinukkusu/simple_tempus) and [apptreesoftware/date_utils](https://github.com/apptreesoftware/date_utils).
+This package draws inspiration and code from [rinukkusu/simple_moment](https://github.com/rinukkusu/simple_moment) and [apptreesoftware/date_utils](https://github.com/apptreesoftware/date_utils).
