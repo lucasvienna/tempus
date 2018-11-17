@@ -48,4 +48,7 @@ class LocaleDE implements ILocale {
 
   IdentifierPosition get futurePosition => IdentifierPosition.prepend;
   IdentifierPosition get pastPosition => IdentifierPosition.prepend;
+
+  List<String> get weekdays =>
+      ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
 }

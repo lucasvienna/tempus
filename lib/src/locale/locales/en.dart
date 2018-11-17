@@ -23,4 +23,7 @@ class LocaleEN implements ILocale {
 
   IdentifierPosition get futurePosition => IdentifierPosition.prepend;
   IdentifierPosition get pastPosition => IdentifierPosition.append;
+
+  List<String> get weekdays =>
+      ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 }
