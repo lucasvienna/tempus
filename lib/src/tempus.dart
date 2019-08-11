@@ -49,16 +49,20 @@ class Tempus {
   static String formatDay(DateTime d) => new DateFormat(_dayFormat).format(d);
 
   /// Returns a formatted string in the [Tempus.weekDayFormat] format
-  static String formatWeekDay(DateTime d) => new DateFormat(_weekDayFormat).format(d);
+  static String formatWeekDay(DateTime d) =>
+      new DateFormat(_weekDayFormat).format(d);
 
   /// Returns a formatted string in the [Tempus.apiDayFormat] format
-  static String formatApiDay(DateTime d) => new DateFormat(_apiDayFormat).format(d);
+  static String formatApiDay(DateTime d) =>
+      new DateFormat(_apiDayFormat).format(d);
 
   /// Returns a formatted string in the [Tempus.monthFormat] format
-  static String formatMonth(DateTime d) => new DateFormat(_monthFormat).format(d);
+  static String formatMonth(DateTime d) =>
+      new DateFormat(_monthFormat).format(d);
 
   /// Returns a formatted string in the [Tempus.dayOfMonthFormat] format
-  static String formatDayOfMonth(DateTime d) => new DateFormat(_dayOfMonthFormat).format(d);
+  static String formatDayOfMonth(DateTime d) =>
+      new DateFormat(_dayOfMonthFormat).format(d);
 
   /// Default Tempus constructor. Creates a new Tempus instance based on current time in the local
   /// time zone.
@@ -189,7 +193,7 @@ class Tempus {
 
     // Weekday is on a 1-7 scale Monday - Sunday,
     // This Calendar's Week starts on Sunday
-    int sub = endOnSunday ? 6 - (day.weekday % 7): 7 - (day.weekday % 7);
+    int sub = endOnSunday ? 6 - (day.weekday % 7) : 7 - (day.weekday % 7);
     return day.add(new Duration(days: sub));
   }
 
@@ -267,10 +271,12 @@ class Tempus {
   }
 
   /// Whether or not the given date is the first day of a month
-  static bool isFirstDayOfMonth(DateTime day) => isSameDay(firstDayOfMonth(day), day);
+  static bool isFirstDayOfMonth(DateTime day) =>
+      isSameDay(firstDayOfMonth(day), day);
 
   /// Whether or not the given date is the last day of a month
-  static bool isLastDayOfMonth(DateTime day) => isSameDay(lastDayOfMonth(day), day);
+  static bool isLastDayOfMonth(DateTime day) =>
+      isSameDay(lastDayOfMonth(day), day);
 
   /// Returns a [String] with the different between [this] and [Tempus()]. Takes an optional
   /// [bool] argument to decide whether to use an identifier. [withoutPrefixOrSuffix] defaults
@@ -327,19 +333,25 @@ class Tempus {
     else if (diff.inDays.abs() < 26)
       timeString = locale.days.replaceFirst('%i', '${diff.inDays.abs()}');
     else if (diff.inDays.abs() < 60)
-      timeString = locale.aMonth.replaceFirst('%i', '${diff.inDays.abs() ~/ 30}');
+      timeString =
+          locale.aMonth.replaceFirst('%i', '${diff.inDays.abs() ~/ 30}');
     else if (diff.inDays.abs() < 320)
-      timeString = locale.months.replaceFirst('%i', '${diff.inDays.abs() ~/ 30}');
+      timeString =
+          locale.months.replaceFirst('%i', '${diff.inDays.abs() ~/ 30}');
     else if (diff.inDays.abs() < 547)
-      timeString = locale.aYear.replaceFirst('%i', '${diff.inDays.abs() ~/ 356}');
+      timeString =
+          locale.aYear.replaceFirst('%i', '${diff.inDays.abs() ~/ 356}');
     else
-      timeString = locale.years.replaceFirst('%i', '${diff.inDays.abs() ~/ 356}');
+      timeString =
+          locale.years.replaceFirst('%i', '${diff.inDays.abs() ~/ 356}');
 
     if (!withoutPrefixOrSuffix) {
       if (diff.isNegative)
-        timeString = _addIdentifier(timeString, locale.futurePosition, locale.futureIdentifier);
+        timeString = _addIdentifier(
+            timeString, locale.futurePosition, locale.futureIdentifier);
       else
-        timeString = _addIdentifier(timeString, locale.pastPosition, locale.pastIdentifier);
+        timeString = _addIdentifier(
+            timeString, locale.pastPosition, locale.pastIdentifier);
     }
 
     return timeString;
@@ -355,7 +367,8 @@ class Tempus {
     return _date.toString();
   }
 
-  String _addIdentifier(String timeString, IdentifierPosition position, String identifier) {
+  String _addIdentifier(
+      String timeString, IdentifierPosition position, String identifier) {
     switch (position) {
       case IdentifierPosition.prepend:
         return '${identifier} ${timeString}';

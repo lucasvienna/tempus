@@ -7,7 +7,8 @@ void main() {
       Tempus tempus = new Tempus();
       expect(tempus.locale(), new TypeMatcher<LocaleEN>());
     });
-    test('instance.locale(locale) sets the locale and returns the new value', () {
+    test('instance.locale(locale) sets the locale and returns the new value',
+        () {
       Tempus tempus = new Tempus();
       ILocale locale = tempus.locale(new LocaleDE());
       expect(locale, allOf(isNotNull, new TypeMatcher<LocaleDE>()));
@@ -20,7 +21,8 @@ void main() {
       expect(locale, allOf(isNotNull, new TypeMatcher<LocaleEN>()));
       expect(locale, equals(gLocale));
     });
-    test('tempus.globalLocale(gLocale) sets the global locale and returns the new global locale',
+    test(
+        'tempus.globalLocale(gLocale) sets the global locale and returns the new global locale',
         () {
       Tempus tempus = new Tempus();
       ILocale gLocale = Tempus.globalLocale(new LocaleDE());

@@ -55,8 +55,4 @@ abstract class ILocale {
   List<String> get weekdays;
 }
 
-enum IdentifierPosition {
-  prepend,
-  append,
-  dontDisplay
-}
+enum IdentifierPosition { prepend, append, dontDisplay }

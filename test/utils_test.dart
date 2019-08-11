@@ -3,7 +3,8 @@ import 'package:tempus/tempus.dart';
 
 void main() {
   group('Comparatives:', () {
-    test('Tempus.isSameDay(dateA, dateB) should return true when days match', () {
+    test('Tempus.isSameDay(dateA, dateB) should return true when days match',
+        () {
       DateTime dateA = new DateTime(2018, 06, 22, 12, 45);
       DateTime dateB = new DateTime(2018, 06, 22, 18, 20);
       expect(Tempus.isSameDay(dateA, dateB), isTrue);
@@ -11,7 +12,9 @@ void main() {
       DateTime dateC = new DateTime(2019, 06, 22, 12, 45);
       expect(Tempus.isSameDay(dateA, dateC), isFalse);
     });
-    test('Tempus.isSameWeek(dateA, dateB) should return true when days are in the same week', () {
+    test(
+        'Tempus.isSameWeek(dateA, dateB) should return true when days are in the same week',
+        () {
       DateTime dateA = new DateTime(2018, 06, 18);
       DateTime dateB = new DateTime(2018, 06, 22);
       expect(Tempus.isSameWeek(dateA, dateB), isTrue);
@@ -136,8 +139,12 @@ void main() {
     });
   });
   group('Ranges', () {
-    test('Tempus.datesInRange(dateA, dateB) should return a valid List<DateTime>', () {});
-    test('Tempus.datesInMonthGrid(dateA, dateB) should return a valid List<DateTime>', () {
+    test(
+        'Tempus.datesInRange(dateA, dateB) should return a valid List<DateTime>',
+        () {});
+    test(
+        'Tempus.datesInMonthGrid(dateA, dateB) should return a valid List<DateTime>',
+        () {
       List<DateTime> grid = Tempus.datesInMonthGrid(new DateTime(2018, 10));
       expect(grid, allOf(isNotNull, new TypeMatcher<List<DateTime>>()));
       expect(grid.length, anyOf(equals(35), equals(42)));

@@ -8,7 +8,8 @@ void main() {
         Tempus tempus = new Tempus();
         expect(tempus.format(), new TypeMatcher<FormatEN>());
       });
-      test('instance.format(format) sets the format and returns the new value', () {
+      test('instance.format(format) sets the format and returns the new value',
+          () {
         Tempus tempus = new Tempus();
         IFormat format = tempus.format(new FormatDE());
         expect(format, allOf(isNotNull, new TypeMatcher<FormatDE>()));
@@ -21,7 +22,8 @@ void main() {
         expect(format, allOf(isNotNull, new TypeMatcher<FormatEN>()));
         expect(format, equals(gLocale));
       });
-      test('tempus.globalFormat(gLocale) sets the global format and returns the new global format',
+      test(
+          'tempus.globalFormat(gLocale) sets the global format and returns the new global format',
           () {
         Tempus tempus = new Tempus();
         IFormat gLocale = Tempus.globalFormat(new FormatDE());
@@ -48,19 +50,24 @@ void main() {
     group('Static formatters:', () {
       group('Getters:', () {
         test('Tempus.dayFormat returns the default "dd"', () {
-          expect(Tempus.dayFormat, allOf(isNotNull, new TypeMatcher<String>(), equals('dd')));
+          expect(Tempus.dayFormat,
+              allOf(isNotNull, new TypeMatcher<String>(), equals('dd')));
         });
         test('Tempus.weekDayFormat returns the default "EEE MMM dd"', () {
-          expect(Tempus.weekDayFormat,
-              allOf(isNotNull, new TypeMatcher<String>(), equals('EEE MMM dd')));
+          expect(
+              Tempus.weekDayFormat,
+              allOf(
+                  isNotNull, new TypeMatcher<String>(), equals('EEE MMM dd')));
         });
         test('Tempus.apiDayFormat returns the default "yyyy-MM-dd"', () {
-          expect(Tempus.apiDayFormat,
-              allOf(isNotNull, new TypeMatcher<String>(), equals('yyyy-MM-dd')));
+          expect(
+              Tempus.apiDayFormat,
+              allOf(
+                  isNotNull, new TypeMatcher<String>(), equals('yyyy-MM-dd')));
         });
         test('Tempus.monthFormat returns the default "MMMM yyyy"', () {
-          expect(
-              Tempus.monthFormat, allOf(isNotNull, new TypeMatcher<String>(), equals('MMMM yyyy')));
+          expect(Tempus.monthFormat,
+              allOf(isNotNull, new TypeMatcher<String>(), equals('MMMM yyyy')));
         });
         test('Tempus.dayOfMonthFormat returns the default "MMM dd"', () {
           expect(Tempus.dayOfMonthFormat,
@@ -68,39 +75,57 @@ void main() {
         });
       });
       group('Setters:', () {
-        test('Tempus.setDayFormat(format) correctly assigns "format" to "dayFormat"', () {
+        test(
+            'Tempus.setDayFormat(format) correctly assigns "format" to "dayFormat"',
+            () {
           String orig = Tempus.dayFormat;
           Tempus.setDayFormat('dd-MM');
-          expect(Tempus.dayFormat, allOf(isNotNull, new TypeMatcher<String>(), equals('dd-MM')));
+          expect(Tempus.dayFormat,
+              allOf(isNotNull, new TypeMatcher<String>(), equals('dd-MM')));
           Tempus.setDayFormat(orig);
         });
-        test('Tempus.setWeekDayFormat(format) correctly assigns "format" to "weekDayFormat"', () {
+        test(
+            'Tempus.setWeekDayFormat(format) correctly assigns "format" to "weekDayFormat"',
+            () {
           String orig = Tempus.weekDayFormat;
           Tempus.setWeekDayFormat('EEE MMM dd yyyy');
-          expect(Tempus.weekDayFormat,
-              allOf(isNotNull, new TypeMatcher<String>(), equals('EEE MMM dd yyyy')));
+          expect(
+              Tempus.weekDayFormat,
+              allOf(isNotNull, new TypeMatcher<String>(),
+                  equals('EEE MMM dd yyyy')));
           Tempus.setWeekDayFormat(orig);
         });
-        test('Tempus.setApiDayFormat(format) correctly assigns "format" to "apiDayFormat"', () {
+        test(
+            'Tempus.setApiDayFormat(format) correctly assigns "format" to "apiDayFormat"',
+            () {
           String orig = Tempus.apiDayFormat;
           Tempus.setApiDayFormat('yyyy-MM-dd HH:mm');
-          expect(Tempus.apiDayFormat,
-              allOf(isNotNull, new TypeMatcher<String>(), equals('yyyy-MM-dd HH:mm')));
+          expect(
+              Tempus.apiDayFormat,
+              allOf(isNotNull, new TypeMatcher<String>(),
+                  equals('yyyy-MM-dd HH:mm')));
           Tempus.setApiDayFormat(orig);
         });
-        test('Tempus.setMonthFormat(format) correctly assigns "format" to "monthFormat"', () {
+        test(
+            'Tempus.setMonthFormat(format) correctly assigns "format" to "monthFormat"',
+            () {
           String orig = Tempus.monthFormat;
           Tempus.setMonthFormat('dd MMMM yyyy');
-          expect(Tempus.monthFormat,
-              allOf(isNotNull, new TypeMatcher<String>(), equals('dd MMMM yyyy')));
+          expect(
+              Tempus.monthFormat,
+              allOf(isNotNull, new TypeMatcher<String>(),
+                  equals('dd MMMM yyyy')));
           Tempus.setMonthFormat(orig);
         });
-        test('Tempus.setDayOfMonthFormat(format) correctly assigns "format" to "dayOfMonthFormat"',
+        test(
+            'Tempus.setDayOfMonthFormat(format) correctly assigns "format" to "dayOfMonthFormat"',
             () {
           String orig = Tempus.dayOfMonthFormat;
           Tempus.setDayOfMonthFormat('yyyy MMM dd');
-          expect(Tempus.dayOfMonthFormat,
-              allOf(isNotNull, new TypeMatcher<String>(), equals('yyyy MMM dd')));
+          expect(
+              Tempus.dayOfMonthFormat,
+              allOf(
+                  isNotNull, new TypeMatcher<String>(), equals('yyyy MMM dd')));
           Tempus.setDayOfMonthFormat(orig);
         });
       });
