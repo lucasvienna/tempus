@@ -1,11 +1,11 @@
 name: tempus
 description: Handy tools for parsing, manipulating and displaying DateTimes in Dart.
-version: 0.2.0
+version: 0.3.0
 author: Lucas Vienna <lmvienna@outlook.com>
 homepage: https://github.com/Avyiel/tempus
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.0.0 <3.0.0"
 
 dependencies:
   intl: "^0.15.0"
