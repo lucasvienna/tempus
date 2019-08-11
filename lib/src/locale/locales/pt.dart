@@ -23,4 +23,7 @@ class LocalePT implements ILocale {
 
   IdentifierPosition get futurePosition => IdentifierPosition.prepend;
   IdentifierPosition get pastPosition => IdentifierPosition.prepend;
+
+  List<String> get weekdays =>
+      ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 }

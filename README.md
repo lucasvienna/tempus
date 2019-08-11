@@ -1,4 +1,4 @@
-# tempus [![Pub](https://img.shields.io/pub/v/tempus.svg)](https://pub.dartlang.org/packages/tempus) [![Build Status](https://travis-ci.org/Avyiel/tempus.svg?branch=master)](https://travis-ci.org/Avyiel/tempus)
+# tempus [![Pub](https://img.shields.io/pub/v/tempus.svg)](https://pub.dartlang.org/packages/tempus) [![Build Status](https://travis-ci.com/Avyiel/tempus.svg?branch=master)](https://travis-ci.com/Avyiel/tempus)
 An implementation of some Moment.js features for parsing, manipulates and displaying dates in Dart.
 
 ## Usage

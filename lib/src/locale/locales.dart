@@ -51,6 +51,8 @@ abstract class ILocale {
 
   IdentifierPosition get futurePosition;
   IdentifierPosition get pastPosition;
+
+  List<String> get weekdays;
 }
 
 enum IdentifierPosition {
