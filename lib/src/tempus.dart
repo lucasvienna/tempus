@@ -81,7 +81,7 @@ class Tempus {
     }
   }
 
-  /// Constructs a new Tempus instance based on [formattedString].
+  /// Constructs a new Tempus instance based on formatted date strings.
   ///
   /// Throws a [FormatException] if the input cannot be parsed.
   /// The function parses a subset of ISO 8601 which includes the subset accepted by RFC 3339.
@@ -125,7 +125,7 @@ class Tempus {
     return _getFormat();
   }
 
-  /// Returns a grid-like list of [DateTimes] in a given month, with either 35 or 42 items.
+  /// Returns a grid-like list of [DateTime]s in a given month, with either 35 or 42 items.
   ///
   /// [sixBySeven] will add 7 days of padding in case the list only has 35 items. That is,
   /// a "grid" of 6 rows by 7 columns.
@@ -280,7 +280,7 @@ class Tempus {
 
   /// Returns a [String] with the different between [this] and [Tempus()]. Takes an optional
   /// [bool] argument to decide whether to use an identifier. [withoutPrefixOrSuffix] defaults
-  /// to [false].
+  /// to `false`.
   ///
   /// ```
   /// var berlinWallFell = Tempus.parse('19891109');
@@ -298,7 +298,7 @@ class Tempus {
   }
 
   /// Returns a [String] with the different between [this] and [other]. Takes an optional [bool]
-  /// argument to decide whether to use an identifier. [withoutPrefixOrSuffix] defaults to [false].
+  /// argument to decide whether to use an identifier. [withoutPrefixOrSuffix] defaults to `false`.
   ///
   /// ```
   /// var berlinWallFell = Tempus.parse('19891109');
