@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
   <meta name="description" content="API docs for the fromNow method from the Tempus class, for the Dart programming language.">
   <title>fromNow method - Tempus class - tempus library - Dart API</title>
   <!-- required because all the links are pseudo-absolute -->
   <base href="../..">
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="static-assets/github.css">
   <link rel="stylesheet" href="static-assets/styles.css">
   <link rel="icon" href="static-assets/favicon.png">
-
+  
 </head>
 
 <body>
@@ -36,7 +37,20 @@
 
 <main>
 
-  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+  <div id="dartdoc-sidebar-left" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+      <form class="search-sidebar" role="search">
+        <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+      </form>
+    </header>
+    
+    <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+      <li><a href="index.html">tempus</a></li>
+      <li><a href="tempus/tempus-library.html">tempus</a></li>
+      <li><a href="tempus/Tempus-class.html">Tempus</a></li>
+      <li class="self-crumb">fromNow method</li>
+    </ol>
+    
     <h5>Tempus class</h5>
     <ol>
       <li class="section-title"><a href="tempus/Tempus-class.html#constructors">Constructors</a></li>
@@ -100,16 +114,17 @@
     </ol>
   </div><!--/.sidebar-offcanvas-->
 
-  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
-    <h1>fromNow method</h1>
+  <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
+      <div><h1><span class="kind-method">fromNow</span> method</h1></div>
 
     <section class="multi-line-signature">
       <span class="returntype">String</span>
-      <span class="name ">fromNow</span>
+            <span class="name ">fromNow</span>
 (<wbr>[<span class="parameter" id="fromNow-param-withoutPrefixOrSuffix"><span class="type-annotation">bool</span> <span class="parameter-name">withoutPrefixOrSuffix</span> = <span class="default-value">false</span></span> ])
+      
     </section>
     <section class="desc markdown">
-      <p>Returns a <code>String</code> with the different between <a href="tempus/Tempus-class.html">this</a> and <a href="tempus/Tempus-class.html">Tempus()</a>. Takes an optional
+      <p>Returns a <code>String</code> with the different between <a href="tempus/Tempus-class.html">this</a> and <a href="tempus/Tempus/Tempus.html">Tempus()</a>. Takes an optional
 <code>bool</code> argument to decide whether to use an identifier. <code>withoutPrefixOrSuffix</code> defaults
 to <code>false</code>.</p>
 <pre class="language-dart"><code>var berlinWallFell = Tempus.parse('19891109');
@@ -119,30 +134,31 @@ assert(difference == 'in 29 years');
 
 var berlinWallFell = Tempus.parse('19891109');
 // Assuming Tempus() is in 2018
-String difference = berlinWallFell.fromNow(false);
+String difference = berlinWallFell.fromNow(true);
 assert(difference == '29 years');
 </code></pre>
     </section>
     
     <section class="summary source-code" id="source">
-      <h2><span>Implementation</span> </h2>
+      <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">String fromNow([bool withoutPrefixOrSuffix = false]) {
-  return from(new Tempus(), withoutPrefixOrSuffix);
+  return new Tempus().from(this, withoutPrefixOrSuffix);
 }</code></pre>
     </section>
 
   </div> <!-- /.main-content -->
 
-  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+  <div id="dartdoc-sidebar-right" class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->
 
 </main>
 
 <footer>
   <span class="no-break">
-    tempus 0.1.0
+    tempus 0.3.0
   </span>
 
+  
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
   <meta name="description" content="API docs for the from method from the Tempus class, for the Dart programming language.">
   <title>from method - Tempus class - tempus library - Dart API</title>
   <!-- required because all the links are pseudo-absolute -->
   <base href="../..">
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,400i,400,300|Source+Sans+Pro:400,300,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="static-assets/github.css">
   <link rel="stylesheet" href="static-assets/styles.css">
   <link rel="icon" href="static-assets/favicon.png">
-
+  
 </head>
 
 <body>
@@ -36,7 +37,20 @@
 
 <main>
 
-  <div class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+  <div id="dartdoc-sidebar-left" class="col-xs-6 col-sm-3 col-md-2 sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+      <form class="search-sidebar" role="search">
+        <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+      </form>
+    </header>
+    
+    <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+      <li><a href="index.html">tempus</a></li>
+      <li><a href="tempus/tempus-library.html">tempus</a></li>
+      <li><a href="tempus/Tempus-class.html">Tempus</a></li>
+      <li class="self-crumb">from method</li>
+    </ol>
+    
     <h5>Tempus class</h5>
     <ol>
       <li class="section-title"><a href="tempus/Tempus-class.html#constructors">Constructors</a></li>
@@ -100,66 +114,75 @@
     </ol>
   </div><!--/.sidebar-offcanvas-->
 
-  <div class="col-xs-12 col-sm-9 col-md-8 main-content">
-    <h1>from method</h1>
+  <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
+      <div><h1><span class="kind-method">from</span> method</h1></div>
 
     <section class="multi-line-signature">
       <span class="returntype">String</span>
-      <span class="name ">from</span>
-(<wbr><span class="parameter" id="from-param-Tempus"><span class="type-annotation"><a href="tempus/Tempus-class.html">Tempus</a></span> <span class="parameter-name">Tempus</span>, [</span> <span class="parameter" id="from-param-withoutPrefixOrSuffix"><span class="type-annotation">bool</span> <span class="parameter-name">withoutPrefixOrSuffix</span> = <span class="default-value">false</span></span> ])
+            <span class="name ">from</span>
+(<wbr><span class="parameter" id="from-param-other"><span class="type-annotation"><a href="tempus/Tempus-class.html">Tempus</a></span> <span class="parameter-name">other</span>, [</span> <span class="parameter" id="from-param-withoutPrefixOrSuffix"><span class="type-annotation">bool</span> <span class="parameter-name">withoutPrefixOrSuffix</span> = <span class="default-value">false</span></span> ])
+      
     </section>
     <section class="desc markdown">
-      <p>Returns a <code>String</code> with the different between <a href="tempus/Tempus-class.html">this</a> and <code>Tempus</code>. Takes an optional <code>bool</code>
+      <p>Returns a <code>String</code> with the different between <a href="tempus/Tempus-class.html">this</a> and <code>other</code>. Takes an optional <code>bool</code>
 argument to decide whether to use an identifier. <code>withoutPrefixOrSuffix</code> defaults to <code>false</code>.</p>
 <pre class="language-dart"><code>var berlinWallFell = Tempus.parse('19891109');
-var dDay = new Tempus.parse('19440606');
+var dDay = Tempus.parse('19440606');
 String difference = berlinWallFell.from(dDay);
 assert(difference == '46 years ago');
 
 var berlinWallFell = Tempus.parse('19891109');
-var dDay = new Tempus.parse('19440606');
+var dDay = Tempus.parse('19440606');
 String difference = berlinWallFell.from(dDay, false);
 assert(difference == '46 years');
 </code></pre>
     </section>
     
     <section class="summary source-code" id="source">
-      <h2><span>Implementation</span> </h2>
-      <pre class="language-dart"><code class="language-dart">String from(Tempus Tempus, [bool withoutPrefixOrSuffix = false]) {
-  Duration diff = Tempus._date.difference(_date);
+      <h2><span>Implementation</span></h2>
+      <pre class="language-dart"><code class="language-dart">String from(Tempus other, [bool withoutPrefixOrSuffix = false]) {
+  Duration diff = _date.difference(other._date);
 
   String timeString = &#39;&#39;;
 
   var locale = _getLocale();
 
-  if (diff.inSeconds.abs() &lt; 45)
+  if (diff.inSeconds.abs() &lt; 45) {
     timeString = locale.seconds.replaceFirst(&#39;%i&#39;, &#39;${diff.inSeconds.abs()}&#39;);
-  else if (diff.inMinutes.abs() &lt; 2)
+  } else if (diff.inMinutes.abs() &lt; 2) {
     timeString = locale.aMinute.replaceFirst(&#39;%i&#39;, &#39;${diff.inMinutes.abs()}&#39;);
-  else if (diff.inMinutes.abs() &lt; 45)
+  } else if (diff.inMinutes.abs() &lt; 45) {
     timeString = locale.minutes.replaceFirst(&#39;%i&#39;, &#39;${diff.inMinutes.abs()}&#39;);
-  else if (diff.inHours.abs() &lt; 2)
+  } else if (diff.inHours.abs() &lt; 2) {
     timeString = locale.anHour.replaceFirst(&#39;%i&#39;, &#39;${diff.inHours.abs()}&#39;);
-  else if (diff.inHours.abs() &lt; 22)
+  } else if (diff.inHours.abs() &lt; 22) {
     timeString = locale.hours.replaceFirst(&#39;%i&#39;, &#39;${diff.inHours.abs()}&#39;);
-  else if (diff.inDays.abs() &lt; 2)
+  } else if (diff.inDays.abs() &lt; 2) {
     timeString = locale.aDay.replaceFirst(&#39;%i&#39;, &#39;${diff.inDays.abs()}&#39;);
-  else if (diff.inDays.abs() &lt; 26)
+  } else if (diff.inDays.abs() &lt; 26) {
     timeString = locale.days.replaceFirst(&#39;%i&#39;, &#39;${diff.inDays.abs()}&#39;);
-  else if (diff.inDays.abs() &lt; 60)
-    timeString = locale.aMonth.replaceFirst(&#39;%i&#39;, &#39;${diff.inDays.abs() ~&#47; 30}&#39;);
-  else if (diff.inDays.abs() &lt; 320)
-    timeString = locale.months.replaceFirst(&#39;%i&#39;, &#39;${diff.inDays.abs() ~&#47; 30}&#39;);
-  else if (diff.inDays.abs() &lt; 547)
-    timeString = locale.aYear.replaceFirst(&#39;%i&#39;, &#39;${diff.inDays.abs() ~&#47; 356}&#39;);
-  else
-    timeString = locale.years.replaceFirst(&#39;%i&#39;, &#39;${diff.inDays.abs() ~&#47; 356}&#39;);
+  } else if (diff.inDays.abs() &lt; 60) {
+    timeString =
+        locale.aMonth.replaceFirst(&#39;%i&#39;, &#39;${diff.inDays.abs() ~&#47; 30}&#39;);
+  } else if (diff.inDays.abs() &lt; 320) {
+    timeString =
+        locale.months.replaceFirst(&#39;%i&#39;, &#39;${diff.inDays.abs() ~&#47; 30}&#39;);
+  } else if (diff.inDays.abs() &lt; 547) {
+    timeString =
+        locale.aYear.replaceFirst(&#39;%i&#39;, &#39;${diff.inDays.abs() ~&#47; 356}&#39;);
+  } else {
+    timeString =
+        locale.years.replaceFirst(&#39;%i&#39;, &#39;${diff.inDays.abs() ~&#47; 356}&#39;);
+  }
 
   if (!withoutPrefixOrSuffix) {
-    if (diff.isNegative)
-      timeString = _addIdentifier(timeString, locale.pastPosition, locale.pastIdentifier);
-    else
-      timeString = _addIdentifier(timeString, locale.futurePosition, locale.futureIdentifier);
+    if (diff.isNegative) {
+      timeString = _addIdentifier(
+          timeString, locale.futurePosition, locale.futureIdentifier);
+    } else {
+      timeString = _addIdentifier(
+          timeString, locale.pastPosition, locale.pastIdentifier);
+    }
   }
 
   return timeString;
@@ -168,16 +191,17 @@ assert(difference == '46 years');
 
   </div> <!-- /.main-content -->
 
-  <div class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
+  <div id="dartdoc-sidebar-right" class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->
 
 </main>
 
 <footer>
   <span class="no-break">
-    tempus 0.1.0
+    tempus 0.3.0
   </span>
 
+  
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
