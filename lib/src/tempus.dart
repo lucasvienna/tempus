@@ -284,11 +284,11 @@ class Tempus {
   ///
   /// var berlinWallFell = Tempus.parse('19891109');
   /// // Assuming Tempus() is in 2018
-  /// String difference = berlinWallFell.fromNow(false);
+  /// String difference = berlinWallFell.fromNow(true);
   /// assert(difference == '29 years');
   /// ```
   String fromNow([bool withoutPrefixOrSuffix = false]) {
-    return from(new Tempus(), withoutPrefixOrSuffix);
+    return new Tempus().from(this, withoutPrefixOrSuffix);
   }
 
   /// Returns a [String] with the different between [this] and [other]. Takes an optional [bool]
@@ -296,17 +296,17 @@ class Tempus {
   ///
   /// ```
   /// var berlinWallFell = Tempus.parse('19891109');
-  /// var dDay = new Tempus.parse('19440606');
+  /// var dDay = Tempus.parse('19440606');
   /// String difference = berlinWallFell.from(dDay);
   /// assert(difference == '46 years ago');
   ///
   /// var berlinWallFell = Tempus.parse('19891109');
-  /// var dDay = new Tempus.parse('19440606');
+  /// var dDay = Tempus.parse('19440606');
   /// String difference = berlinWallFell.from(dDay, false);
   /// assert(difference == '46 years');
   /// ```
   String from(Tempus other, [bool withoutPrefixOrSuffix = false]) {
-    Duration diff = this._date.difference(other._date);
+    Duration diff = _date.difference(other._date);
 
     String timeString = '';
 
