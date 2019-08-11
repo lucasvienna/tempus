@@ -291,7 +291,7 @@ class Tempus {
     return from(new Tempus(), withoutPrefixOrSuffix);
   }
 
-  /// Returns a [String] with the different between [this] and [Tempus]. Takes an optional [bool]
+  /// Returns a [String] with the different between [this] and [other]. Takes an optional [bool]
   /// argument to decide whether to use an identifier. [withoutPrefixOrSuffix] defaults to [false].
   ///
   /// ```
@@ -305,8 +305,8 @@ class Tempus {
   /// String difference = berlinWallFell.from(dDay, false);
   /// assert(difference == '46 years');
   /// ```
-  String from(Tempus Tempus, [bool withoutPrefixOrSuffix = false]) {
-    Duration diff = Tempus._date.difference(_date);
+  String from(Tempus other, [bool withoutPrefixOrSuffix = false]) {
+    Duration diff = this._date.difference(other._date);
 
     String timeString = '';
 
@@ -337,9 +337,9 @@ class Tempus {
 
     if (!withoutPrefixOrSuffix) {
       if (diff.isNegative)
-        timeString = _addIdentifier(timeString, locale.pastPosition, locale.pastIdentifier);
-      else
         timeString = _addIdentifier(timeString, locale.futurePosition, locale.futureIdentifier);
+      else
+        timeString = _addIdentifier(timeString, locale.pastPosition, locale.pastIdentifier);
     }
 
     return timeString;
