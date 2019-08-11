@@ -93,7 +93,7 @@ class Tempus {
   ///
   /// If no argument is specified, returns the current global locale. If a valid locale is
   /// specified, sets the global locale and then returns the new value.
-  static ILocale globalLocale([ILocale locale = null]) {
+  static ILocale globalLocale([ILocale locale]) {
     if (locale != null) _globalLocale = locale;
     return _globalLocale;
   }
@@ -102,7 +102,7 @@ class Tempus {
   ///
   /// If no argument is specified, returns the current locale. If a valid locale is specified, sets
   /// the instance's locale and then returns the new value.
-  ILocale locale([ILocale locale = null]) {
+  ILocale locale([ILocale locale]) {
     if (locale != null && locale is ILocale) _locale = locale;
     return _getLocale();
   }
@@ -111,7 +111,7 @@ class Tempus {
   ///
   /// If no argument is specified, returns the current global format. If a valid format is
   /// specified, sets the global format and then returns the new value.
-  static IFormat globalFormat([IFormat format = null]) {
+  static IFormat globalFormat([IFormat format]) {
     if (format != null) _globalFormat = format;
     return _globalFormat;
   }
@@ -120,7 +120,7 @@ class Tempus {
   ///
   /// If no argument is specified, returns the current format. If a valid format is specified, sets
   /// the instance's format and then returns the new value.
-  IFormat format([IFormat format = null]) {
+  IFormat format([IFormat format]) {
     if (format != null && format is IFormat) _format = format;
     return _getFormat();
   }
@@ -318,40 +318,42 @@ class Tempus {
 
     var locale = _getLocale();
 
-    if (diff.inSeconds.abs() < 45)
+    if (diff.inSeconds.abs() < 45) {
       timeString = locale.seconds.replaceFirst('%i', '${diff.inSeconds.abs()}');
-    else if (diff.inMinutes.abs() < 2)
+    } else if (diff.inMinutes.abs() < 2) {
       timeString = locale.aMinute.replaceFirst('%i', '${diff.inMinutes.abs()}');
-    else if (diff.inMinutes.abs() < 45)
+    } else if (diff.inMinutes.abs() < 45) {
       timeString = locale.minutes.replaceFirst('%i', '${diff.inMinutes.abs()}');
-    else if (diff.inHours.abs() < 2)
+    } else if (diff.inHours.abs() < 2) {
       timeString = locale.anHour.replaceFirst('%i', '${diff.inHours.abs()}');
-    else if (diff.inHours.abs() < 22)
+    } else if (diff.inHours.abs() < 22) {
       timeString = locale.hours.replaceFirst('%i', '${diff.inHours.abs()}');
-    else if (diff.inDays.abs() < 2)
+    } else if (diff.inDays.abs() < 2) {
       timeString = locale.aDay.replaceFirst('%i', '${diff.inDays.abs()}');
-    else if (diff.inDays.abs() < 26)
+    } else if (diff.inDays.abs() < 26) {
       timeString = locale.days.replaceFirst('%i', '${diff.inDays.abs()}');
-    else if (diff.inDays.abs() < 60)
+    } else if (diff.inDays.abs() < 60) {
       timeString =
           locale.aMonth.replaceFirst('%i', '${diff.inDays.abs() ~/ 30}');
-    else if (diff.inDays.abs() < 320)
+    } else if (diff.inDays.abs() < 320) {
       timeString =
           locale.months.replaceFirst('%i', '${diff.inDays.abs() ~/ 30}');
-    else if (diff.inDays.abs() < 547)
+    } else if (diff.inDays.abs() < 547) {
       timeString =
           locale.aYear.replaceFirst('%i', '${diff.inDays.abs() ~/ 356}');
-    else
+    } else {
       timeString =
           locale.years.replaceFirst('%i', '${diff.inDays.abs() ~/ 356}');
+    }
 
     if (!withoutPrefixOrSuffix) {
-      if (diff.isNegative)
+      if (diff.isNegative) {
         timeString = _addIdentifier(
             timeString, locale.futurePosition, locale.futureIdentifier);
-      else
+      } else {
         timeString = _addIdentifier(
             timeString, locale.pastPosition, locale.pastIdentifier);
+      }
     }
 
     return timeString;
