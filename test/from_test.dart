@@ -100,7 +100,7 @@ void main() {
     });
     test('instance.fromNow() returns a valid string', () {
       Tempus tempus =
-          new Tempus.fromDate(new DateTime(2048, 09, 25, 16, 26, 05));
+          new Tempus.fromDate(new DateTime(2008, 09, 25, 16, 26, 05));
       String from = tempus.fromNow();
       expect(
           from,
@@ -121,10 +121,30 @@ void main() {
             ),
             contains(LocaleEN().seconds),
           ));
+      expect(from, anyOf(contains(LocaleEN().pastIdentifier)));
+
+      tempus = new Tempus.fromDate(new DateTime(2189, 09, 25, 16, 26, 05));
+      from = tempus.fromNow();
       expect(
           from,
-          anyOf(contains(LocaleEN().futureIdentifier),
-              contains(LocaleEN().pastIdentifier)));
+          anyOf(
+            anyOf(
+              contains(LocaleEN().minutes.substring(4)),
+              contains(LocaleEN().hours.substring(4)),
+              contains(LocaleEN().days.substring(4)),
+              contains(LocaleEN().months.substring(4)),
+              contains(LocaleEN().years.substring(4)),
+            ),
+            anyOf(
+              contains(LocaleEN().aMinute),
+              contains(LocaleEN().anHour),
+              contains(LocaleEN().aDay),
+              contains(LocaleEN().aMonth),
+              contains(LocaleEN().aYear),
+            ),
+            contains(LocaleEN().seconds),
+          ));
+      expect(from, anyOf(contains(LocaleEN().futureIdentifier)));
     });
     test('instance.fromNow(true) has no identifier', () {
       Tempus tempus =
