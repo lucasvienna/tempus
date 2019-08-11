@@ -1,4 +1,9 @@
-## [0.3.0] - 2018-11-17
+## [0.3.1] - 2019-08-11
+
+* Update docs
+* Update author information
+
+## [0.3.0] - 2019-08-11
 
 * Fix `fromNow()` calculating the difference in reverse
 * Improved some comments
