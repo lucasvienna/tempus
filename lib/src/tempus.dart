@@ -61,7 +61,7 @@ class Tempus {
 
   /// Returns a formatted string in the [Tempus.dayOfWeekFormat] format
   static String formatDayOfWeek(DateTime d) =>
-      DateFormat(_dayOfWeek).format(d);
+      DateFormat(_dayOfWeekFormat).format(d);
 
   /// Returns a formatted string in the [Tempus.apiDayFormat] format
   static String formatApiDay(DateTime d) => DateFormat(_apiDayFormat).format(d);
