@@ -1,3 +1,16 @@
+## [0.4.0] - 2019-12-29
+
+### Deps
+* Bump `test` to `^1.9.4`
+* Add `pedantic`
+
+### Style
+* Fix all `analyzer` warnings
+
+### Docs
+* Update docs
+
+
 ## [0.3.2] - 2019-12-13
 
 * Bump `intl` to `^0.16.0`

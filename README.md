@@ -16,9 +16,9 @@ main() {
     // Will print "in a few seconds"
     print(tempus.from(dateForComparison));
 
-    DateTime randomDate = new DateTime(2018, 10);
     // Will generate a list with 42 DateTimes, perfect for creating
     // calendar grids. By default starts on Sunday, can be Monday.
+    DateTime randomDate = new DateTime(2018, 10);
     List<DateTime> dateGrid = Tempus.datesInMonthGrid(randomDate, true);
 }
 ```
