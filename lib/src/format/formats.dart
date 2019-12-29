@@ -1,7 +1,7 @@
-import "package:intl/intl.dart";
+import 'package:intl/intl.dart';
 
-export 'formats/en.dart';
 export 'formats/de.dart';
+export 'formats/en.dart';
 
 abstract class IFormat {
   DateFormat get LTS;

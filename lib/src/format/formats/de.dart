@@ -2,10 +2,21 @@ import 'package:intl/intl.dart';
 import 'package:tempus/src/format/formats.dart';
 
 class FormatDE implements IFormat {
-  DateFormat get LTS => new DateFormat('HH:mm:ss');
-  DateFormat get LT => new DateFormat('HH:mm');
-  DateFormat get L => new DateFormat('MM.DD.YYYY');
-  DateFormat get LL => new DateFormat('D. MMMM YYYY');
-  DateFormat get LLL => new DateFormat('D. MMMM YYYY HH:mm');
-  DateFormat get LLLL => new DateFormat('dddd, D. MMMM YYYY HH:mm');
+  @override
+  DateFormat get LTS => DateFormat('HH:mm:ss');
+
+  @override
+  DateFormat get LT => DateFormat('HH:mm');
+
+  @override
+  DateFormat get L => DateFormat('MM.DD.YYYY');
+
+  @override
+  DateFormat get LL => DateFormat('D. MMMM YYYY');
+
+  @override
+  DateFormat get LLL => DateFormat('D. MMMM YYYY HH:mm');
+
+  @override
+  DateFormat get LLLL => DateFormat('dddd, D. MMMM YYYY HH:mm');
 }

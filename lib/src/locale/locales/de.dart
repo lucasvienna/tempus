@@ -26,28 +26,44 @@
 import 'package:tempus/src/locale/locales.dart';
 
 class LocaleDE implements ILocale {
+  @override
   String get seconds => 'einigen Sekunden';
 
+  @override
   String get aMinute => 'einer Minute';
+  @override
   String get minutes => '%i Minuten';
 
+  @override
   String get anHour => 'einer Stunde';
+  @override
   String get hours => '%i Stunden';
 
+  @override
   String get aDay => 'einem Tag';
+  @override
   String get days => '%i Tagen';
 
+  @override
   String get aMonth => 'einem Monat';
+  @override
   String get months => '%i Monaten';
 
+  @override
   String get aYear => 'einem Jahr';
+  @override
   String get years => '%i Jahren';
 
+  @override
   String get futureIdentifier => 'in';
+  @override
   String get pastIdentifier => 'vor';
 
+  @override
   IdentifierPosition get futurePosition => IdentifierPosition.prepend;
+  @override
   IdentifierPosition get pastPosition => IdentifierPosition.prepend;
 
+  @override
   List<String> get weekdays => ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
 }
