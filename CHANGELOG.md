@@ -1,3 +1,11 @@
+## [0.4.2] - 2019-12-29
+
+### Fixes
+* Add missing getter/setter
+
+### Docs
+* Update docs
+
 ## [0.4.1] - 2019-12-29
 
 ### Features
