@@ -1,3 +1,8 @@
+## [0.4.1] - 2019-12-29
+
+### Features
+* Add function to format as day of week
+
 ## [0.4.0] - 2019-12-29
 
 ### Deps
