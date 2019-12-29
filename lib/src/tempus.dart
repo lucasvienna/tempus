@@ -11,6 +11,7 @@ class Tempus {
 
   static String _dayFormat = 'dd';
   static String _weekDayFormat = 'EEE MMM dd';
+  static String _dayOfWeekFormat = 'EEE';
   static String _apiDayFormat = 'yyyy-MM-dd';
   static String _monthFormat = 'MMMM yyyy';
   static String _dayOfMonthFormat = 'MMM dd';
@@ -51,6 +52,10 @@ class Tempus {
   /// Returns a formatted string in the [Tempus.weekDayFormat] format
   static String formatWeekDay(DateTime d) =>
       DateFormat(_weekDayFormat).format(d);
+
+  /// Returns a formatted string in the [Tempus.weekDayFormat] format
+  static String formatDayOfWeek(DateTime d) =>
+      DateFormat(_dayOfWeek).format(d);
 
   /// Returns a formatted string in the [Tempus.apiDayFormat] format
   static String formatApiDay(DateTime d) => DateFormat(_apiDayFormat).format(d);
