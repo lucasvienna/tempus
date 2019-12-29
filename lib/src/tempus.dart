@@ -22,6 +22,12 @@ class Tempus {
   /// Sets the global [_dayFormat]
   static void setDayFormat(String format) => _dayFormat = format;
 
+  /// Returns the global [_dayOfWeekFormat]
+  static String get dayOfWeekFormat => _dayOfWeekFormat;
+
+  /// Sets the global [_dayOfWeekFormat]
+  static void setDayOfWeekFormat(String format) => _dayOfWeekFormat = format;
+
   /// Returns the global [_weekDayFormat]
   static String get weekDayFormat => _weekDayFormat;
 
@@ -53,7 +59,7 @@ class Tempus {
   static String formatWeekDay(DateTime d) =>
       DateFormat(_weekDayFormat).format(d);
 
-  /// Returns a formatted string in the [Tempus.weekDayFormat] format
+  /// Returns a formatted string in the [Tempus.dayOfWeekFormat] format
   static String formatDayOfWeek(DateTime d) =>
       DateFormat(_dayOfWeek).format(d);
 
