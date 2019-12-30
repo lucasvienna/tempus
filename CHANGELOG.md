@@ -1,3 +1,22 @@
+## [0.5.0] - 2019-12-30
+
+### Features
+* Add 24h format
+* Add UTC date normalizer
+* `Tempus().date` is now a getter
+
+### Fixes
+* Improved month grid generation
+* Improved days in rage generation
+
+### Docs
+* Updated docs
+
+### Tests
+* Added `normalize` and `normalizeDate` tests
+* Added `daysInRange` tests
+* Fixed `datesInMonthGrid` tests
+
 ## [0.4.2] - 2019-12-29
 
 ### Fixes
