@@ -2,6 +2,16 @@ import 'package:intl/intl.dart';
 import 'package:tempus/src/locale/locales.dart';
 import 'package:tempus/src/format/formats.dart';
 
+enum DayOfWeek {
+  monday,
+  tuesday,
+  wednesday,
+  thursday,
+  friday,
+  saturday,
+  sunday
+}
+
 class Tempus {
   DateTime _date;
   ILocale _locale;
@@ -151,45 +161,51 @@ class Tempus {
   /// a "grid" of 6 rows by 7 columns.
   ///
   /// [startOnMonday] will start the grid on Monday instead of Sunday.
-  static List<DateTime> datesInMonthGrid(DateTime month,
-      [bool sixBySeven = false, bool startOnMonday = false]) {
-    final first = firstDayOfMonth(month);
-    final daysBefore = startOnMonday ? first.weekday - 1 : first.weekday;
-    final firstToDisplay = first.subtract(Duration(days: daysBefore));
-    final last = lastDayOfMonth(month);
-
-    var daysAfter = startOnMonday ? 8 - last.weekday : 7 - last.weekday;
-
-    // If the last day is sunday (7) the entire week must be rendered
-    // Otherwise, if we're ending on Sunday leave it as zero
-    if (daysAfter == 0 && !startOnMonday) daysAfter = 7;
-
-    var lastToDisplay = last.add(Duration(days: daysAfter));
-
-    var grid = datesInRange(firstToDisplay, lastToDisplay).toList();
-
-    if (sixBySeven && grid.length < 42 && grid.length >= 35) {
-      lastToDisplay = lastToDisplay.add(Duration(days: 42 - grid.length));
-      grid = datesInRange(firstToDisplay, lastToDisplay).toList();
+  static List<DateTime> datesInMonthGrid(
+    DateTime month, {
+    bool startOnMonday = false,
+  }) {
+    int _getWeekdayNumber(DayOfWeek weekday) {
+      return DayOfWeek.values.indexOf(weekday) + 1;
     }
 
-    return grid;
+    int _getDaysBefore(DateTime firstDay, DayOfWeek startingWeekDay) {
+      return (firstDay.weekday + 7 - _getWeekdayNumber(startingWeekDay)) % 7;
+    }
+
+    int _getDaysAfter(DateTime lastDay, DayOfWeek startingWeekDay) {
+      final invertedStartingWeekday = 8 - _getWeekdayNumber(startingWeekDay);
+
+      var daysAfter = 7 - ((lastDay.weekday + invertedStartingWeekday) % 7) + 1;
+      if (daysAfter == 8) {
+        daysAfter = 1;
+      }
+
+      return daysAfter;
+    }
+
+    final first = firstDayOfMonth(month);
+    final daysBefore = _getDaysBefore(
+        first, startOnMonday ? DayOfWeek.monday : DayOfWeek.sunday);
+    final firstToDisplay = first.subtract(Duration(days: daysBefore));
+
+    final last = lastDayOfMonth(month);
+    final daysAfter = _getDaysAfter(
+        last, startOnMonday ? DayOfWeek.monday : DayOfWeek.sunday);
+
+    final lastToDisplay = last.add(Duration(days: daysAfter));
+    return daysInRange(firstToDisplay, lastToDisplay).toList();
   }
 
   /// Returns a [DateTime] for each day the given range.
   ///
   /// [start] is inclusive and [end] is exclusive
-  static Iterable<DateTime> datesInRange(DateTime start, DateTime end) sync* {
-    var i = start;
-    var offset = start.timeZoneOffset;
-    while (i.isBefore(end)) {
-      yield i;
-      i = i.add(Duration(days: 1));
-      var timeZoneDiff = i.timeZoneOffset - offset;
-      if (timeZoneDiff.inSeconds != 0) {
-        offset = i.timeZoneOffset;
-        i = i.subtract(Duration(seconds: timeZoneDiff.inSeconds));
-      }
+  static Iterable<DateTime> daysInRange(DateTime start, DateTime end) sync* {
+    var temp = start;
+
+    while (temp.isBefore(end)) {
+      yield normalizeDate(temp);
+      temp = temp.add(const Duration(days: 1));
     }
   }
 
@@ -219,12 +235,15 @@ class Tempus {
 
   /// Returns a new [DateTime] in the 1st day of the given month
   static DateTime firstDayOfMonth(DateTime month) {
-    return DateTime(month.year, month.month);
+    return DateTime.utc(month.year, month.month, 1, 12);
   }
 
   /// Returns a new [DateTime] in the last day of the given month
   static DateTime lastDayOfMonth(DateTime month) {
-    return nextMonth(month).subtract(Duration(days: 1));
+    final date = month.month < 12
+        ? DateTime.utc(month.year, month.month + 1, 1, 12)
+        : DateTime.utc(month.year + 1, 1, 1, 12);
+    return date.subtract(const Duration(days: 1));
   }
 
   /// Returns a new [DateTime] in the previous calendar month.

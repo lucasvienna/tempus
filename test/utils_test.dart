@@ -141,7 +141,16 @@ void main() {
   group('Ranges', () {
     test(
         'Tempus.datesInRange(dateA, dateB) should return a valid List<DateTime>',
-        () {});
+        () {
+      final ranges = Tempus.daysInRange(DateTime(2018, 10), DateTime(2018, 11));
+      expect(ranges, allOf(isNotNull, TypeMatcher<Iterable<DateTime>>()));
+      expect(ranges.length, equals(31));
+      expect(ranges.first.day, equals(1));
+      expect(ranges.first.month, equals(10));
+      expect(ranges.last.day, equals(31));
+      expect(ranges.last.month, equals(10));
+    });
+
     test(
         'Tempus.datesInMonthGrid(dateA, dateB) should return a valid List<DateTime>',
         () {
@@ -149,12 +158,12 @@ void main() {
       expect(grid, allOf(isNotNull, TypeMatcher<List<DateTime>>()));
       expect(grid.length, anyOf(equals(35), equals(42)));
 
-      grid = Tempus.datesInMonthGrid(DateTime(2018, 10), true, true);
+      grid = Tempus.datesInMonthGrid(DateTime(2018, 10), startOnMonday: true);
       expect(grid, allOf(isNotNull, TypeMatcher<List<DateTime>>()));
-      expect(grid.length, equals(42));
+      expect(grid.length, anyOf(equals(35), equals(42)));
       expect(grid.first.day, equals(1));
       expect(grid.first.month, equals(10));
-      expect(grid.last.day, equals(11));
+      expect(grid.last.day, equals(4));
       expect(grid.last.month, equals(11));
     });
   });
