@@ -227,9 +227,9 @@ class Tempus {
     return nextMonth(month).subtract(Duration(days: 1));
   }
 
-  /// Retuns a new [DateTime] in the previous calendar month.
+  /// Returns a new [DateTime] in the previous calendar month.
   ///
-  /// If the month is January (01), the retuned [DateTime] is in the previous year
+  /// If the month is January (01), the returned [DateTime] is in the previous year
   static DateTime previousMonth(DateTime m) {
     var year = m.year;
     var month = m.month;
@@ -242,9 +242,9 @@ class Tempus {
     return DateTime(year, month);
   }
 
-  /// Retuns a new [DateTime] in the next calendar month.
+  /// Returns a new [DateTime] in the next calendar month.
   ///
-  /// If the month is December (12), the retuned [DateTime] is in the next year
+  /// If the month is December (12), the returned [DateTime] is in the next year
   static DateTime nextMonth(DateTime m) {
     var year = m.year;
     var month = m.month;
@@ -384,9 +384,9 @@ class Tempus {
   }
 
   /// Returns the inner [DateTime].
-  DateTime date() => _date;
+  DateTime get date => _date;
 
-  /// Retuns a human-readable [String] for this instance.
+  /// Returns a human-readable [String] for this instance.
   ///
   /// The resulting string can be parsed back using [parse].
   @override
