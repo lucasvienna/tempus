@@ -68,6 +68,7 @@
     
     
       <li class="section-title"><a href="tempus/tempus-library.html#enums">Enums</a></li>
+      <li><a href="tempus/DayOfWeek-class.html">DayOfWeek</a></li>
       <li><a href="tempus/IdentifierPosition-class.html">IdentifierPosition</a></li>
     
     
@@ -99,10 +100,18 @@ time zone.
       </dl>
     </section>
 
-    <section class="summary offset-anchor inherited" id="instance-properties">
+    <section class="summary offset-anchor" id="instance-properties">
       <h2>Properties</h2>
 
       <dl class="properties">
+        <dt id="date" class="property">
+          <span class="name"><a href="tempus/Tempus/date.html">date</a></span>
+          <span class="signature">&#8594; DateTime</span>         
+        </dt>
+        <dd>
+          Returns the inner <code>DateTime</code>.
+                  <div class="features">read-only</div>
+</dd>
         <dt id="hashCode" class="property inherited">
           <span class="name"><a href="tempus/Tempus/hashCode.html">hashCode</a></span>
           <span class="signature">&#8594; int</span>         
@@ -125,15 +134,6 @@ time zone.
     <section class="summary offset-anchor" id="instance-methods">
       <h2>Methods</h2>
       <dl class="callables">
-        <dt id="date" class="callable">
-          <span class="name"><a href="tempus/Tempus/date.html">date</a></span><span class="signature">(<wbr>)
-            <span class="returntype parameter">&#8594; DateTime</span>
-          </span>
-                  </dt>
-        <dd>
-          Returns the inner <code>DateTime</code>.
-                  
-</dd>
         <dt id="format" class="callable">
           <span class="name"><a href="tempus/Tempus/format.html">format</a></span><span class="signature">(<wbr>[<span class="parameter" id="format-param-format"><span class="type-annotation"><a href="tempus/IFormat-class.html">IFormat</a></span> <span class="parameter-name">format</span></span> ])
             <span class="returntype parameter">&#8594; <a href="tempus/IFormat-class.html">IFormat</a></span>
@@ -173,13 +173,22 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
           Simultaneous getter and setter for this instance's locale. <a href="tempus/Tempus/locale.html">[...]</a>
                   
 </dd>
+        <dt id="normalize" class="callable">
+          <span class="name"><a href="tempus/Tempus/normalize.html">normalize</a></span><span class="signature">(<wbr>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+                  </dt>
+        <dd>
+          
+                  
+</dd>
         <dt id="toString" class="callable">
           <span class="name"><a href="tempus/Tempus/toString.html">toString</a></span><span class="signature">(<wbr>)
             <span class="returntype parameter">&#8594; String</span>
           </span>
                   </dt>
         <dd>
-          Retuns a human-readable <code>String</code> for this instance. <a href="tempus/Tempus/toString.html">[...]</a>
+          Returns a human-readable <code>String</code> for this instance. <a href="tempus/Tempus/toString.html">[...]</a>
                   <div class="features">override</div>
 </dd>
         <dt id="noSuchMethod" class="callable inherited">
@@ -245,6 +254,14 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
           Returns the global <code>_dayOfWeekFormat</code>
                   <div class="features">read-only</div>
 </dd>
+        <dt id="hourFormat" class="property">
+          <span class="name"><a href="tempus/Tempus/hourFormat.html">hourFormat</a></span>
+          <span class="signature">&#8594; String</span>         
+        </dt>
+        <dd>
+          Returns the global <code>_hourFormat</code>
+                  <div class="features">read-only</div>
+</dd>
         <dt id="monthFormat" class="property">
           <span class="name"><a href="tempus/Tempus/monthFormat.html">monthFormat</a></span>
           <span class="signature">&#8594; String</span>         
@@ -268,21 +285,21 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
       <h2>Static Methods</h2>
       <dl class="callables">
         <dt id="datesInMonthGrid" class="callable">
-          <span class="name"><a href="tempus/Tempus/datesInMonthGrid.html">datesInMonthGrid</a></span><span class="signature">(<wbr><span class="parameter" id="datesInMonthGrid-param-month"><span class="type-annotation">DateTime</span> <span class="parameter-name">month</span>, [</span> <span class="parameter" id="datesInMonthGrid-param-sixBySeven"><span class="type-annotation">bool</span> <span class="parameter-name">sixBySeven</span> = <span class="default-value">false</span></span> <span class="parameter" id="datesInMonthGrid-param-startOnMonday"><span class="type-annotation">bool</span> <span class="parameter-name">startOnMonday</span> = <span class="default-value">false</span></span> ])
+          <span class="name"><a href="tempus/Tempus/datesInMonthGrid.html">datesInMonthGrid</a></span><span class="signature">(<wbr><span class="parameter" id="datesInMonthGrid-param-month"><span class="type-annotation">DateTime</span> <span class="parameter-name">month</span>, {</span> <span class="parameter" id="datesInMonthGrid-param-startOnMonday"><span class="type-annotation">bool</span> <span class="parameter-name">startOnMonday</span>: <span class="default-value">false</span></span> })
             <span class="returntype parameter">&#8594; List<span class="signature">&lt;<wbr><span class="type-parameter">DateTime</span>&gt;</span></span>
           </span>
                   </dt>
         <dd>
-          Returns a grid-like list of <code>DateTime</code>s in a given month, with either 35 or 42 items. <a href="tempus/Tempus/datesInMonthGrid.html">[...]</a>
+          Returns a grid-like list of <code>DateTime</code>s in a given month, with 35 items. <a href="tempus/Tempus/datesInMonthGrid.html">[...]</a>
                   
 </dd>
-        <dt id="datesInRange" class="callable">
-          <span class="name"><a href="tempus/Tempus/datesInRange.html">datesInRange</a></span><span class="signature">(<wbr><span class="parameter" id="datesInRange-param-start"><span class="type-annotation">DateTime</span> <span class="parameter-name">start</span></span> <span class="parameter" id="datesInRange-param-end"><span class="type-annotation">DateTime</span> <span class="parameter-name">end</span></span>)
+        <dt id="daysInRange" class="callable">
+          <span class="name"><a href="tempus/Tempus/daysInRange.html">daysInRange</a></span><span class="signature">(<wbr><span class="parameter" id="daysInRange-param-start"><span class="type-annotation">DateTime</span> <span class="parameter-name">start</span></span> <span class="parameter" id="daysInRange-param-end"><span class="type-annotation">DateTime</span> <span class="parameter-name">end</span></span>)
             <span class="returntype parameter">&#8594; Iterable<span class="signature">&lt;<wbr><span class="type-parameter">DateTime</span>&gt;</span></span>
           </span>
                   </dt>
         <dd>
-          Returns a <code>DateTime</code> for each day the given range. <a href="tempus/Tempus/datesInRange.html">[...]</a>
+          Returns a <code>DateTime</code> for each day the given range. <a href="tempus/Tempus/daysInRange.html">[...]</a>
                   
 </dd>
         <dt id="firstDayOfMonth" class="callable">
@@ -435,7 +452,7 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
           </span>
                   </dt>
         <dd>
-          Retuns a new <code>DateTime</code> in the next calendar month. <a href="tempus/Tempus/nextMonth.html">[...]</a>
+          Returns a new <code>DateTime</code> in the next calendar month. <a href="tempus/Tempus/nextMonth.html">[...]</a>
                   
 </dd>
         <dt id="nextWeek" class="callable">
@@ -445,6 +462,15 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
                   </dt>
         <dd>
           Returns a new <code>DateTime</code> 7 days after the given date
+                  
+</dd>
+        <dt id="normalizeDate" class="callable">
+          <span class="name"><a href="tempus/Tempus/normalizeDate.html">normalizeDate</a></span><span class="signature">(<wbr><span class="parameter" id="normalizeDate-param-value"><span class="type-annotation">DateTime</span> <span class="parameter-name">value</span></span>)
+            <span class="returntype parameter">&#8594; DateTime</span>
+          </span>
+                  </dt>
+        <dd>
+          
                   
 </dd>
         <dt id="parse" class="callable">
@@ -462,7 +488,7 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
           </span>
                   </dt>
         <dd>
-          Retuns a new <code>DateTime</code> in the previous calendar month. <a href="tempus/Tempus/previousMonth.html">[...]</a>
+          Returns a new <code>DateTime</code> in the previous calendar month. <a href="tempus/Tempus/previousMonth.html">[...]</a>
                   
 </dd>
         <dt id="previousWeek" class="callable">
@@ -510,6 +536,15 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
           Sets the global <code>_dayOfWeekFormat</code>
                   
 </dd>
+        <dt id="setHourFormat" class="callable">
+          <span class="name"><a href="tempus/Tempus/setHourFormat.html">setHourFormat</a></span><span class="signature">(<wbr><span class="parameter" id="setHourFormat-param-format"><span class="type-annotation">String</span> <span class="parameter-name">format</span></span>)
+            <span class="returntype parameter">&#8594; void</span>
+          </span>
+                  </dt>
+        <dd>
+          Sets the global <code>_hourFormat</code>
+                  
+</dd>
         <dt id="setMonthFormat" class="callable">
           <span class="name"><a href="tempus/Tempus/setMonthFormat.html">setMonthFormat</a></span><span class="signature">(<wbr><span class="parameter" id="setMonthFormat-param-format"><span class="type-annotation">String</span> <span class="parameter-name">format</span></span>)
             <span class="returntype parameter">&#8594; void</span>
@@ -541,18 +576,19 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
       <li><a href="tempus/Tempus/Tempus.html">Tempus</a></li>
       <li><a href="tempus/Tempus/Tempus.fromDate.html">fromDate</a></li>
     
-      <li class="section-title inherited">
+      <li class="section-title">
         <a href="tempus/Tempus-class.html#instance-properties">Properties</a>
       </li>
+      <li><a href="tempus/Tempus/date.html">date</a></li>
       <li class="inherited"><a href="tempus/Tempus/hashCode.html">hashCode</a></li>
       <li class="inherited"><a href="tempus/Tempus/runtimeType.html">runtimeType</a></li>
     
       <li class="section-title"><a href="tempus/Tempus-class.html#instance-methods">Methods</a></li>
-      <li><a href="tempus/Tempus/date.html">date</a></li>
       <li><a href="tempus/Tempus/format.html">format</a></li>
       <li><a href="tempus/Tempus/from.html">from</a></li>
       <li><a href="tempus/Tempus/fromNow.html">fromNow</a></li>
       <li><a href="tempus/Tempus/locale.html">locale</a></li>
+      <li><a href="tempus/Tempus/normalize.html">normalize</a></li>
       <li><a href="tempus/Tempus/toString.html">toString</a></li>
       <li class="inherited"><a href="tempus/Tempus/noSuchMethod.html">noSuchMethod</a></li>
     
@@ -564,12 +600,13 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
       <li><a href="tempus/Tempus/dayFormat.html">dayFormat</a></li>
       <li><a href="tempus/Tempus/dayOfMonthFormat.html">dayOfMonthFormat</a></li>
       <li><a href="tempus/Tempus/dayOfWeekFormat.html">dayOfWeekFormat</a></li>
+      <li><a href="tempus/Tempus/hourFormat.html">hourFormat</a></li>
       <li><a href="tempus/Tempus/monthFormat.html">monthFormat</a></li>
       <li><a href="tempus/Tempus/weekDayFormat.html">weekDayFormat</a></li>
     
       <li class="section-title"><a href="tempus/Tempus-class.html#static-methods">Static methods</a></li>
       <li><a href="tempus/Tempus/datesInMonthGrid.html">datesInMonthGrid</a></li>
-      <li><a href="tempus/Tempus/datesInRange.html">datesInRange</a></li>
+      <li><a href="tempus/Tempus/daysInRange.html">daysInRange</a></li>
       <li><a href="tempus/Tempus/firstDayOfMonth.html">firstDayOfMonth</a></li>
       <li><a href="tempus/Tempus/firstDayOfWeek.html">firstDayOfWeek</a></li>
       <li><a href="tempus/Tempus/formatApiDay.html">formatApiDay</a></li>
@@ -588,6 +625,7 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
       <li><a href="tempus/Tempus/lastDayOfWeek.html">lastDayOfWeek</a></li>
       <li><a href="tempus/Tempus/nextMonth.html">nextMonth</a></li>
       <li><a href="tempus/Tempus/nextWeek.html">nextWeek</a></li>
+      <li><a href="tempus/Tempus/normalizeDate.html">normalizeDate</a></li>
       <li><a href="tempus/Tempus/parse.html">parse</a></li>
       <li><a href="tempus/Tempus/previousMonth.html">previousMonth</a></li>
       <li><a href="tempus/Tempus/previousWeek.html">previousWeek</a></li>
@@ -595,6 +633,7 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
       <li><a href="tempus/Tempus/setDayFormat.html">setDayFormat</a></li>
       <li><a href="tempus/Tempus/setDayOfMonthFormat.html">setDayOfMonthFormat</a></li>
       <li><a href="tempus/Tempus/setDayOfWeekFormat.html">setDayOfWeekFormat</a></li>
+      <li><a href="tempus/Tempus/setHourFormat.html">setHourFormat</a></li>
       <li><a href="tempus/Tempus/setMonthFormat.html">setMonthFormat</a></li>
       <li><a href="tempus/Tempus/setWeekDayFormat.html">setWeekDayFormat</a></li>
     
@@ -607,7 +646,7 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
 <footer>
   <span class="no-break">
     tempus
-      0.4.2
+      0.5.0
   </span>
 
   <!-- footer-text placeholder -->

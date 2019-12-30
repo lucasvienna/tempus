@@ -58,18 +58,19 @@
         <li><a href="tempus/Tempus/Tempus.html">Tempus</a></li>
         <li><a href="tempus/Tempus/Tempus.fromDate.html">fromDate</a></li>
     
-        <li class="section-title inherited">
+        <li class="section-title">
             <a href="tempus/Tempus-class.html#instance-properties">Properties</a>
         </li>
+        <li><a href="tempus/Tempus/date.html">date</a></li>
         <li class="inherited"><a href="tempus/Tempus/hashCode.html">hashCode</a></li>
         <li class="inherited"><a href="tempus/Tempus/runtimeType.html">runtimeType</a></li>
     
         <li class="section-title"><a href="tempus/Tempus-class.html#instance-methods">Methods</a></li>
-        <li><a href="tempus/Tempus/date.html">date</a></li>
         <li><a href="tempus/Tempus/format.html">format</a></li>
         <li><a href="tempus/Tempus/from.html">from</a></li>
         <li><a href="tempus/Tempus/fromNow.html">fromNow</a></li>
         <li><a href="tempus/Tempus/locale.html">locale</a></li>
+        <li><a href="tempus/Tempus/normalize.html">normalize</a></li>
         <li><a href="tempus/Tempus/toString.html">toString</a></li>
         <li class="inherited"><a href="tempus/Tempus/noSuchMethod.html">noSuchMethod</a></li>
     
@@ -81,12 +82,13 @@
         <li><a href="tempus/Tempus/dayFormat.html">dayFormat</a></li>
         <li><a href="tempus/Tempus/dayOfMonthFormat.html">dayOfMonthFormat</a></li>
         <li><a href="tempus/Tempus/dayOfWeekFormat.html">dayOfWeekFormat</a></li>
+        <li><a href="tempus/Tempus/hourFormat.html">hourFormat</a></li>
         <li><a href="tempus/Tempus/monthFormat.html">monthFormat</a></li>
         <li><a href="tempus/Tempus/weekDayFormat.html">weekDayFormat</a></li>
     
         <li class="section-title"><a href="tempus/Tempus-class.html#static-methods">Static methods</a></li>
         <li><a href="tempus/Tempus/datesInMonthGrid.html">datesInMonthGrid</a></li>
-        <li><a href="tempus/Tempus/datesInRange.html">datesInRange</a></li>
+        <li><a href="tempus/Tempus/daysInRange.html">daysInRange</a></li>
         <li><a href="tempus/Tempus/firstDayOfMonth.html">firstDayOfMonth</a></li>
         <li><a href="tempus/Tempus/firstDayOfWeek.html">firstDayOfWeek</a></li>
         <li><a href="tempus/Tempus/formatApiDay.html">formatApiDay</a></li>
@@ -105,6 +107,7 @@
         <li><a href="tempus/Tempus/lastDayOfWeek.html">lastDayOfWeek</a></li>
         <li><a href="tempus/Tempus/nextMonth.html">nextMonth</a></li>
         <li><a href="tempus/Tempus/nextWeek.html">nextWeek</a></li>
+        <li><a href="tempus/Tempus/normalizeDate.html">normalizeDate</a></li>
         <li><a href="tempus/Tempus/parse.html">parse</a></li>
         <li><a href="tempus/Tempus/previousMonth.html">previousMonth</a></li>
         <li><a href="tempus/Tempus/previousWeek.html">previousWeek</a></li>
@@ -112,6 +115,7 @@
         <li><a href="tempus/Tempus/setDayFormat.html">setDayFormat</a></li>
         <li><a href="tempus/Tempus/setDayOfMonthFormat.html">setDayOfMonthFormat</a></li>
         <li><a href="tempus/Tempus/setDayOfWeekFormat.html">setDayOfWeekFormat</a></li>
+        <li><a href="tempus/Tempus/setHourFormat.html">setHourFormat</a></li>
         <li><a href="tempus/Tempus/setMonthFormat.html">setMonthFormat</a></li>
         <li><a href="tempus/Tempus/setWeekDayFormat.html">setWeekDayFormat</a></li>
     
@@ -126,41 +130,50 @@
     <section class="multi-line-signature">
       <span class="returntype">List<span class="signature">&lt;<wbr><span class="type-parameter">DateTime</span>&gt;</span></span>
             <span class="name ">datesInMonthGrid</span>
-(<wbr><span class="parameter" id="datesInMonthGrid-param-month"><span class="type-annotation">DateTime</span> <span class="parameter-name">month</span>, [</span> <span class="parameter" id="datesInMonthGrid-param-sixBySeven"><span class="type-annotation">bool</span> <span class="parameter-name">sixBySeven</span> = <span class="default-value">false</span></span> <span class="parameter" id="datesInMonthGrid-param-startOnMonday"><span class="type-annotation">bool</span> <span class="parameter-name">startOnMonday</span> = <span class="default-value">false</span></span> ])
+(<wbr><span class="parameter" id="datesInMonthGrid-param-month"><span class="type-annotation">DateTime</span> <span class="parameter-name">month</span>, {</span> <span class="parameter" id="datesInMonthGrid-param-startOnMonday"><span class="type-annotation">bool</span> <span class="parameter-name">startOnMonday</span>: <span class="default-value">false</span></span> })
       
     </section>
     <section class="desc markdown">
-      <p>Returns a grid-like list of <code>DateTime</code>s in a given month, with either 35 or 42 items.</p>
-<p><code>sixBySeven</code> will add 7 days of padding in case the list only has 35 items. That is,
-a "grid" of 6 rows by 7 columns.</p>
+      <p>Returns a grid-like list of <code>DateTime</code>s in a given month, with 35 items.</p>
 <p><code>startOnMonday</code> will start the grid on Monday instead of Sunday.</p>
     </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">static List&lt;DateTime&gt; datesInMonthGrid(DateTime month,
-    [bool sixBySeven = false, bool startOnMonday = false]) {
-  final first = firstDayOfMonth(month);
-  final daysBefore = startOnMonday ? first.weekday - 1 : first.weekday;
-  final firstToDisplay = first.subtract(Duration(days: daysBefore));
-  final last = lastDayOfMonth(month);
-
-  var daysAfter = startOnMonday ? 8 - last.weekday : 7 - last.weekday;
-
-  &#47;&#47; If the last day is sunday (7) the entire week must be rendered
-  &#47;&#47; Otherwise, if we&#39;re ending on Sunday leave it as zero
-  if (daysAfter == 0 &amp;&amp; !startOnMonday) daysAfter = 7;
-
-  var lastToDisplay = last.add(Duration(days: daysAfter));
-
-  var grid = datesInRange(firstToDisplay, lastToDisplay).toList();
-
-  if (sixBySeven &amp;&amp; grid.length &lt; 42 &amp;&amp; grid.length &gt;= 35) {
-    lastToDisplay = lastToDisplay.add(Duration(days: 42 - grid.length));
-    grid = datesInRange(firstToDisplay, lastToDisplay).toList();
+      <pre class="language-dart"><code class="language-dart">static List&lt;DateTime&gt; datesInMonthGrid(
+  DateTime month, {
+  bool startOnMonday = false,
+}) {
+  int _getWeekdayNumber(DayOfWeek weekday) {
+    return DayOfWeek.values.indexOf(weekday) + 1;
   }
 
-  return grid;
+  int _getDaysBefore(DateTime firstDay, DayOfWeek startingWeekDay) {
+    return (firstDay.weekday + 7 - _getWeekdayNumber(startingWeekDay)) % 7;
+  }
+
+  int _getDaysAfter(DateTime lastDay, DayOfWeek startingWeekDay) {
+    final invertedStartingWeekday = 8 - _getWeekdayNumber(startingWeekDay);
+
+    var daysAfter = 7 - ((lastDay.weekday + invertedStartingWeekday) % 7) + 1;
+    if (daysAfter == 8) {
+      daysAfter = 1;
+    }
+
+    return daysAfter;
+  }
+
+  final first = firstDayOfMonth(month);
+  final daysBefore = _getDaysBefore(
+      first, startOnMonday ? DayOfWeek.monday : DayOfWeek.sunday);
+  final firstToDisplay = first.subtract(Duration(days: daysBefore));
+
+  final last = lastDayOfMonth(month);
+  final daysAfter = _getDaysAfter(
+      last, startOnMonday ? DayOfWeek.monday : DayOfWeek.sunday);
+
+  final lastToDisplay = last.add(Duration(days: daysAfter));
+  return daysInRange(firstToDisplay, lastToDisplay).toList();
 }</code></pre>
     </section>
 
@@ -174,7 +187,7 @@ a "grid" of 6 rows by 7 columns.</p>
 <footer>
   <span class="no-break">
     tempus
-      0.4.2
+      0.5.0
   </span>
 
   <!-- footer-text placeholder -->

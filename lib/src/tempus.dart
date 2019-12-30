@@ -155,10 +155,7 @@ class Tempus {
     return _getFormat();
   }
 
-  /// Returns a grid-like list of [DateTime]s in a given month, with either 35 or 42 items.
-  ///
-  /// [sixBySeven] will add 7 days of padding in case the list only has 35 items. That is,
-  /// a "grid" of 6 rows by 7 columns.
+  /// Returns a grid-like list of [DateTime]s in a given month, with 35 items.
   ///
   /// [startOnMonday] will start the grid on Monday instead of Sunday.
   static List<DateTime> datesInMonthGrid(
