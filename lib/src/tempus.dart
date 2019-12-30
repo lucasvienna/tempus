@@ -80,6 +80,10 @@ class Tempus {
   static String formatDayOfMonth(DateTime d) =>
       DateFormat(_dayOfMonthFormat).format(d);
 
+  static DateTime normalizeDate(DateTime value) {
+    return DateTime.utc(value.year, value.month, value.day, 12);
+  }
+
   /// Default Tempus constructor. Creates a new Tempus instance based on current time in the local
   /// time zone.
   Tempus() {
@@ -373,6 +377,10 @@ class Tempus {
     }
 
     return timeString;
+  }
+
+  void normalize() {
+    _date = DateTime.utc(_date.year, _date.month, _date.day, 12);
   }
 
   /// Returns the inner [DateTime].

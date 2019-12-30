@@ -158,4 +158,25 @@ void main() {
       expect(grid.last.month, equals(11));
     });
   });
+
+  group('Normalization', () {
+    test('Normalize Tempus instance sets time to UTC 12:00', () {
+      final date = DateTime(2019, 10, 15, 17, 45, 58);
+      final tempus = Tempus.fromDate(date);
+
+      expect(tempus.date, equals(date));
+
+      tempus.normalize();
+      expect(tempus.date.isUtc, isTrue);
+      expect(tempus.date, equals(DateTime.utc(2019, 10, 15, 12)));
+    });
+
+    test('Normalize date sets time to UTC 12:00', () {
+      final date = DateTime(2019, 10, 15, 17, 45, 58);
+      final normDate = Tempus.normalizeDate(date);
+
+      expect(normDate.isUtc, isTrue);
+      expect(normDate, equals(DateTime.utc(2019, 10, 15, 12)));
+    });
+  });
 }
