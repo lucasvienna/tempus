@@ -1,4 +1,4 @@
-import 'package:tempus/src/locale/locales.dart';
+part of tempus;
 
 class LocaleEN implements ILocale {
   @override

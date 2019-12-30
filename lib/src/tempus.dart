@@ -1,6 +1,4 @@
-import 'package:intl/intl.dart';
-import 'package:tempus/src/locale/locales.dart';
-import 'package:tempus/src/format/formats.dart';
+part of tempus;
 
 enum DayOfWeek {
   monday,

@@ -23,10 +23,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-export 'locales/de.dart';
-export 'locales/en.dart';
-export 'locales/es.dart';
-export 'locales/pt.dart';
+part of tempus;
 
 abstract class ILocale {
   String get seconds;

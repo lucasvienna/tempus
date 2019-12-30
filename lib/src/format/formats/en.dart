@@ -1,5 +1,4 @@
-import 'package:intl/intl.dart';
-import 'package:tempus/src/format/formats.dart';
+part of tempus;
 
 class FormatEN implements IFormat {
   @override

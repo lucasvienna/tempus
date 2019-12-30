@@ -49,6 +49,14 @@
 /// ```
 library tempus;
 
-export 'src/tempus.dart';
-export 'src/locale/locales.dart';
-export 'src/format/formats.dart';
+import 'package:intl/intl.dart';
+
+part 'src/tempus.dart';
+part 'src/locale/locale.dart';
+part 'src/locale/locales/de.dart';
+part 'src/locale/locales/en.dart';
+part 'src/locale/locales/es.dart';
+part 'src/locale/locales/pt.dart';
+part 'src/format/format.dart';
+part 'src/format/formats/de.dart';
+part 'src/format/formats/en.dart';

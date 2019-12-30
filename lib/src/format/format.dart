@@ -1,7 +1,4 @@
-import 'package:intl/intl.dart';
-
-export 'formats/de.dart';
-export 'formats/en.dart';
+part of tempus;
 
 abstract class IFormat {
   DateFormat get LTS;
