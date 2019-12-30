@@ -87,8 +87,9 @@
         <li><a href="tempus/Tempus/weekDayFormat.html">weekDayFormat</a></li>
     
         <li class="section-title"><a href="tempus/Tempus-class.html#static-methods">Static methods</a></li>
-        <li><a href="tempus/Tempus/datesInMonthGrid.html">datesInMonthGrid</a></li>
+        <li><a href="tempus/Tempus/daysInMonth.html">daysInMonth</a></li>
         <li><a href="tempus/Tempus/daysInRange.html">daysInRange</a></li>
+        <li><a href="tempus/Tempus/daysInWeek.html">daysInWeek</a></li>
         <li><a href="tempus/Tempus/firstDayOfMonth.html">firstDayOfMonth</a></li>
         <li><a href="tempus/Tempus/firstDayOfWeek.html">firstDayOfWeek</a></li>
         <li><a href="tempus/Tempus/formatApiDay.html">formatApiDay</a></li>
@@ -141,16 +142,16 @@
       <h2><span>Implementation</span></h2>
       <pre class="language-dart"><code class="language-dart">static bool isSameWeek(DateTime a, DateTime b) {
   &#47;&#47; Handle Daylight Savings by setting hour to 12:00 Noon rather than the default of Midnight
-  a = DateTime.utc(a.year, a.month, a.day, 12);
-  b = DateTime.utc(b.year, b.month, b.day, 12);
+  final normA = normalizeDate(a);
+  final normB = normalizeDate(b);
 
-  var diff = a.difference(b).inDays;
+  var diff = normA.difference(normB).inDays;
   if (diff.abs() &gt;= 7) {
     return false;
   }
 
-  var min = a.isBefore(b) ? a : b;
-  var max = a.isBefore(b) ? b : a;
+  var min = normA.isBefore(normB) ? normA : normB;
+  var max = normA.isBefore(normB) ? normB : normA;
 
   return max.weekday % 7 - min.weekday % 7 &gt;= 0;
 }</code></pre>
@@ -166,7 +167,7 @@
 <footer>
   <span class="no-break">
     tempus
-      0.5.0
+      1.0.0
   </span>
 
   <!-- footer-text placeholder -->

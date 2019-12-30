@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the datesInMonthGrid method from the Tempus class, for the Dart programming language.">
-  <title>datesInMonthGrid method - Tempus class - tempus library - Dart API</title>
+  <meta name="description" content="API docs for the daysInMonth method from the Tempus class, for the Dart programming language.">
+  <title>daysInMonth method - Tempus class - tempus library - Dart API</title>
   <!-- required because all the links are pseudo-absolute -->
   <base href="../..">
 
@@ -27,9 +27,9 @@
     <li><a href="index.html">tempus</a></li>
     <li><a href="tempus/tempus-library.html">tempus</a></li>
     <li><a href="tempus/Tempus-class.html">Tempus</a></li>
-    <li class="self-crumb">datesInMonthGrid method</li>
+    <li class="self-crumb">daysInMonth method</li>
   </ol>
-  <div class="self-name">datesInMonthGrid</div>
+  <div class="self-name">daysInMonth</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -48,7 +48,7 @@
       <li><a href="index.html">tempus</a></li>
       <li><a href="tempus/tempus-library.html">tempus</a></li>
       <li><a href="tempus/Tempus-class.html">Tempus</a></li>
-      <li class="self-crumb">datesInMonthGrid method</li>
+      <li class="self-crumb">daysInMonth method</li>
     </ol>
     
     <h5>Tempus class</h5>
@@ -87,8 +87,9 @@
         <li><a href="tempus/Tempus/weekDayFormat.html">weekDayFormat</a></li>
     
         <li class="section-title"><a href="tempus/Tempus-class.html#static-methods">Static methods</a></li>
-        <li><a href="tempus/Tempus/datesInMonthGrid.html">datesInMonthGrid</a></li>
+        <li><a href="tempus/Tempus/daysInMonth.html">daysInMonth</a></li>
         <li><a href="tempus/Tempus/daysInRange.html">daysInRange</a></li>
+        <li><a href="tempus/Tempus/daysInWeek.html">daysInWeek</a></li>
         <li><a href="tempus/Tempus/firstDayOfMonth.html">firstDayOfMonth</a></li>
         <li><a href="tempus/Tempus/firstDayOfWeek.html">firstDayOfWeek</a></li>
         <li><a href="tempus/Tempus/formatApiDay.html">formatApiDay</a></li>
@@ -125,12 +126,12 @@
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
-      <div><h1><span class="kind-method">datesInMonthGrid</span> method</h1></div>
+      <div><h1><span class="kind-method">daysInMonth</span> method</h1></div>
 
     <section class="multi-line-signature">
       <span class="returntype">List<span class="signature">&lt;<wbr><span class="type-parameter">DateTime</span>&gt;</span></span>
-            <span class="name ">datesInMonthGrid</span>
-(<wbr><span class="parameter" id="datesInMonthGrid-param-month"><span class="type-annotation">DateTime</span> <span class="parameter-name">month</span>, {</span> <span class="parameter" id="datesInMonthGrid-param-startOnMonday"><span class="type-annotation">bool</span> <span class="parameter-name">startOnMonday</span>: <span class="default-value">false</span></span> })
+            <span class="name ">daysInMonth</span>
+(<wbr><span class="parameter" id="daysInMonth-param-month"><span class="type-annotation">DateTime</span> <span class="parameter-name">month</span>, {</span> <span class="parameter" id="daysInMonth-param-startOnMonday"><span class="type-annotation">bool</span> <span class="parameter-name">startOnMonday</span>: <span class="default-value">false</span></span> })
       
     </section>
     <section class="desc markdown">
@@ -140,29 +141,10 @@
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">static List&lt;DateTime&gt; datesInMonthGrid(
+      <pre class="language-dart"><code class="language-dart">static List&lt;DateTime&gt; daysInMonth(
   DateTime month, {
   bool startOnMonday = false,
 }) {
-  int _getWeekdayNumber(DayOfWeek weekday) {
-    return DayOfWeek.values.indexOf(weekday) + 1;
-  }
-
-  int _getDaysBefore(DateTime firstDay, DayOfWeek startingWeekDay) {
-    return (firstDay.weekday + 7 - _getWeekdayNumber(startingWeekDay)) % 7;
-  }
-
-  int _getDaysAfter(DateTime lastDay, DayOfWeek startingWeekDay) {
-    final invertedStartingWeekday = 8 - _getWeekdayNumber(startingWeekDay);
-
-    var daysAfter = 7 - ((lastDay.weekday + invertedStartingWeekday) % 7) + 1;
-    if (daysAfter == 8) {
-      daysAfter = 1;
-    }
-
-    return daysAfter;
-  }
-
   final first = firstDayOfMonth(month);
   final daysBefore = _getDaysBefore(
       first, startOnMonday ? DayOfWeek.monday : DayOfWeek.sunday);
@@ -187,7 +169,7 @@
 <footer>
   <span class="no-break">
     tempus
-      0.5.0
+      1.0.0
   </span>
 
   <!-- footer-text placeholder -->

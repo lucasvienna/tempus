@@ -175,11 +175,11 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
 </dd>
         <dt id="normalize" class="callable">
           <span class="name"><a href="tempus/Tempus/normalize.html">normalize</a></span><span class="signature">(<wbr>)
-            <span class="returntype parameter">&#8594; void</span>
+            <span class="returntype parameter">&#8594; DateTime</span>
           </span>
                   </dt>
         <dd>
-          
+          Normalizes the internal <a href="tempus/Tempus/date.html">date</a> as a UTC date at 12:00.
                   
 </dd>
         <dt id="toString" class="callable">
@@ -284,13 +284,13 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
     <section class="summary offset-anchor" id="static-methods">
       <h2>Static Methods</h2>
       <dl class="callables">
-        <dt id="datesInMonthGrid" class="callable">
-          <span class="name"><a href="tempus/Tempus/datesInMonthGrid.html">datesInMonthGrid</a></span><span class="signature">(<wbr><span class="parameter" id="datesInMonthGrid-param-month"><span class="type-annotation">DateTime</span> <span class="parameter-name">month</span>, {</span> <span class="parameter" id="datesInMonthGrid-param-startOnMonday"><span class="type-annotation">bool</span> <span class="parameter-name">startOnMonday</span>: <span class="default-value">false</span></span> })
+        <dt id="daysInMonth" class="callable">
+          <span class="name"><a href="tempus/Tempus/daysInMonth.html">daysInMonth</a></span><span class="signature">(<wbr><span class="parameter" id="daysInMonth-param-month"><span class="type-annotation">DateTime</span> <span class="parameter-name">month</span>, {</span> <span class="parameter" id="daysInMonth-param-startOnMonday"><span class="type-annotation">bool</span> <span class="parameter-name">startOnMonday</span>: <span class="default-value">false</span></span> })
             <span class="returntype parameter">&#8594; List<span class="signature">&lt;<wbr><span class="type-parameter">DateTime</span>&gt;</span></span>
           </span>
                   </dt>
         <dd>
-          Returns a grid-like list of <code>DateTime</code>s in a given month, with 35 items. <a href="tempus/Tempus/datesInMonthGrid.html">[...]</a>
+          Returns a grid-like list of <code>DateTime</code>s in a given month, with 35 items. <a href="tempus/Tempus/daysInMonth.html">[...]</a>
                   
 </dd>
         <dt id="daysInRange" class="callable">
@@ -300,6 +300,16 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
                   </dt>
         <dd>
           Returns a <code>DateTime</code> for each day the given range. <a href="tempus/Tempus/daysInRange.html">[...]</a>
+                  
+</dd>
+        <dt id="daysInWeek" class="callable">
+          <span class="name"><a href="tempus/Tempus/daysInWeek.html">daysInWeek</a></span><span class="signature">(<wbr><span class="parameter" id="daysInWeek-param-week"><span class="type-annotation">DateTime</span> <span class="parameter-name">week</span></span>)
+            <span class="returntype parameter">&#8594; List<span class="signature">&lt;<wbr><span class="type-parameter">DateTime</span>&gt;</span></span>
+          </span>
+                  </dt>
+        <dd>
+          Returns a list of <code>DateTime</code>s in a given week, with 7 items ranging from
+Sunday to Saturday.
                   
 </dd>
         <dt id="firstDayOfMonth" class="callable">
@@ -465,12 +475,12 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
                   
 </dd>
         <dt id="normalizeDate" class="callable">
-          <span class="name"><a href="tempus/Tempus/normalizeDate.html">normalizeDate</a></span><span class="signature">(<wbr><span class="parameter" id="normalizeDate-param-value"><span class="type-annotation">DateTime</span> <span class="parameter-name">value</span></span>)
+          <span class="name"><a href="tempus/Tempus/normalizeDate.html">normalizeDate</a></span><span class="signature">(<wbr><span class="parameter" id="normalizeDate-param-date"><span class="type-annotation">DateTime</span> <span class="parameter-name">date</span></span>)
             <span class="returntype parameter">&#8594; DateTime</span>
           </span>
                   </dt>
         <dd>
-          
+          Normalizes the given <code>date</code> as a UTC date at 12:00.
                   
 </dd>
         <dt id="parse" class="callable">
@@ -605,8 +615,9 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
       <li><a href="tempus/Tempus/weekDayFormat.html">weekDayFormat</a></li>
     
       <li class="section-title"><a href="tempus/Tempus-class.html#static-methods">Static methods</a></li>
-      <li><a href="tempus/Tempus/datesInMonthGrid.html">datesInMonthGrid</a></li>
+      <li><a href="tempus/Tempus/daysInMonth.html">daysInMonth</a></li>
       <li><a href="tempus/Tempus/daysInRange.html">daysInRange</a></li>
+      <li><a href="tempus/Tempus/daysInWeek.html">daysInWeek</a></li>
       <li><a href="tempus/Tempus/firstDayOfMonth.html">firstDayOfMonth</a></li>
       <li><a href="tempus/Tempus/firstDayOfWeek.html">firstDayOfWeek</a></li>
       <li><a href="tempus/Tempus/formatApiDay.html">formatApiDay</a></li>
@@ -646,7 +657,7 @@ to <code>false</code>. <a href="tempus/Tempus/fromNow.html">[...]</a>
 <footer>
   <span class="no-break">
     tempus
-      0.5.0
+      1.0.0
   </span>
 
   <!-- footer-text placeholder -->

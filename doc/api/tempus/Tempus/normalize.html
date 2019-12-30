@@ -87,8 +87,9 @@
         <li><a href="tempus/Tempus/weekDayFormat.html">weekDayFormat</a></li>
     
         <li class="section-title"><a href="tempus/Tempus-class.html#static-methods">Static methods</a></li>
-        <li><a href="tempus/Tempus/datesInMonthGrid.html">datesInMonthGrid</a></li>
+        <li><a href="tempus/Tempus/daysInMonth.html">daysInMonth</a></li>
         <li><a href="tempus/Tempus/daysInRange.html">daysInRange</a></li>
+        <li><a href="tempus/Tempus/daysInWeek.html">daysInWeek</a></li>
         <li><a href="tempus/Tempus/firstDayOfMonth.html">firstDayOfMonth</a></li>
         <li><a href="tempus/Tempus/firstDayOfWeek.html">firstDayOfWeek</a></li>
         <li><a href="tempus/Tempus/formatApiDay.html">formatApiDay</a></li>
@@ -128,16 +129,20 @@
       <div><h1><span class="kind-method">normalize</span> method</h1></div>
 
     <section class="multi-line-signature">
-      <span class="returntype">void</span>
+      <span class="returntype">DateTime</span>
             <span class="name ">normalize</span>
 (<wbr>)
       
     </section>
+    <section class="desc markdown">
+      <p>Normalizes the internal <a href="tempus/Tempus/date.html">date</a> as a UTC date at 12:00.</p>
+    </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
-      <pre class="language-dart"><code class="language-dart">void normalize() {
+      <pre class="language-dart"><code class="language-dart">DateTime normalize() {
   _date = DateTime.utc(_date.year, _date.month, _date.day, 12);
+  return _date;
 }</code></pre>
     </section>
 
@@ -151,7 +156,7 @@
 <footer>
   <span class="no-break">
     tempus
-      0.5.0
+      1.0.0
   </span>
 
   <!-- footer-text placeholder -->
