@@ -9,12 +9,19 @@ class Tempus {
   static ILocale _globalLocale = LocaleEN();
   static IFormat _globalFormat = FormatEN();
 
+  static String _hourFormat = 'HH:mm';
   static String _dayFormat = 'dd';
   static String _weekDayFormat = 'EEE MMM dd';
   static String _dayOfWeekFormat = 'EEE';
   static String _apiDayFormat = 'yyyy-MM-dd';
   static String _monthFormat = 'MMMM yyyy';
   static String _dayOfMonthFormat = 'MMM dd';
+
+  /// Returns the global [_hourFormat]
+  static String get hourFormat => _hourFormat;
+
+  /// Sets the global [_hourFormat]
+  static void setHourFormat(String format) => _hourFormat = format;
 
   /// Returns the global [_dayFormat]
   static String get dayFormat => _dayFormat;
