@@ -65,12 +65,12 @@ main() {
     Tempus tempus = new Tempus();
 
     // Will print "in a few seconds"
-    print(tempus.from(dateForComparison));
+    print(tempus.from(Tempus.fromDate(dateForComparison)));
 
-    // Will generate a list with 42 DateTimes, perfect for creating
+    // Will generate a list with 35 DateTimes, perfect for creating
     // calendar grids. By default starts on Sunday, can be Monday.
     DateTime randomDate = new DateTime(2018, 10);
-    List&lt;DateTime&gt; dateGrid = Tempus.datesInMonthGrid(randomDate, true);
+    List&lt;DateTime&gt; dateGrid = Tempus.daysInMonth(randomDate, startOnMonday: true);
 }
 </code></pre>
 <h2 id="locales">Locales</h2>
@@ -124,7 +124,7 @@ displaying dates in Dart. <a href="tempus/tempus-library.html">[...]</a>
 <footer>
   <span class="no-break">
     tempus
-      1.0.0
+      1.1.1
   </span>
 
   <!-- footer-text placeholder -->

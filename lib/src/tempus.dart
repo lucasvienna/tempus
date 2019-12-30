@@ -57,6 +57,9 @@ class Tempus {
   /// Sets the global [_dayOfMonthFormat]
   static void setDayOfMonthFormat(String format) => _dayOfMonthFormat = format;
 
+  /// Returns a formatted string in the [Tempus.hourFormat] format
+  static String formatHour(DateTime d) => DateFormat(_hourFormat).format(d);
+
   /// Returns a formatted string in the [Tempus.dayFormat] format
   static String formatDay(DateTime d) => DateFormat(_dayFormat).format(d);
 
