@@ -14,12 +14,12 @@ main() {
     Tempus tempus = new Tempus();
 
     // Will print "in a few seconds"
-    print(tempus.from(Tempus.fromDate(dateForComparison)));
+    print(tempus.from(dateForComparison));
 
-    // Will generate a list with 35 DateTimes, perfect for creating
+    // Will generate a list with 42 DateTimes, perfect for creating
     // calendar grids. By default starts on Sunday, can be Monday.
     DateTime randomDate = new DateTime(2018, 10);
-    List<DateTime> dateGrid = Tempus.daysInMonth(randomDate, startOnMonday: true);
+    List<DateTime> dateGrid = Tempus.datesInMonthGrid(randomDate, true);
 }
 ```
 
@@ -58,13 +58,3 @@ class ShortLocaleEn extends LocaleEN {
   String get days => '%id';
 }
 ```
-
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: https://github.com/Avyiel/tempus/issues
-
-## Credits
-
-This package draws inspiration and code from [rinukkusu/simple_moment](https://github.com/rinukkusu/simple_moment) and [apptreesoftware/date_utils](https://github.com/apptreesoftware/date_utils).
