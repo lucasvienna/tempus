@@ -1,3 +1,7 @@
+## [1.1.1] | 2019-12-30
+### Fixes
+* Add missing `formatHour` function
+
 ## [1.1.0] | 2019-12-30
 * Added example package!
 
