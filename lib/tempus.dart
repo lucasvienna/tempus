@@ -52,6 +52,7 @@ library tempus;
 import 'package:intl/intl.dart';
 
 part 'src/tempus.dart';
+part 'src/utils.dart';
 part 'src/locale/locale.dart';
 part 'src/locale/locales/de.dart';
 part 'src/locale/locales/en.dart';

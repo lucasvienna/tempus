@@ -154,11 +154,11 @@ void main() {
     test(
         'Tempus.datesInMonthGrid(dateA, dateB) should return a valid List<DateTime>',
         () {
-      var grid = Tempus.datesInMonthGrid(DateTime(2018, 10));
+      var grid = Tempus.daysInMonth(DateTime(2018, 10));
       expect(grid, allOf(isNotNull, TypeMatcher<List<DateTime>>()));
       expect(grid.length, anyOf(equals(35), equals(42)));
 
-      grid = Tempus.datesInMonthGrid(DateTime(2018, 10), startOnMonday: true);
+      grid = Tempus.daysInMonth(DateTime(2018, 10), startOnMonday: true);
       expect(grid, allOf(isNotNull, TypeMatcher<List<DateTime>>()));
       expect(grid.length, anyOf(equals(35), equals(42)));
       expect(grid.first.day, equals(1));

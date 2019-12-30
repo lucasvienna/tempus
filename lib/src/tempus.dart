@@ -1,15 +1,5 @@
 part of tempus;
 
-enum DayOfWeek {
-  monday,
-  tuesday,
-  wednesday,
-  thursday,
-  friday,
-  saturday,
-  sunday
-}
-
 class Tempus {
   DateTime _date;
   ILocale _locale;
@@ -88,8 +78,9 @@ class Tempus {
   static String formatDayOfMonth(DateTime d) =>
       DateFormat(_dayOfMonthFormat).format(d);
 
-  static DateTime normalizeDate(DateTime value) {
-    return DateTime.utc(value.year, value.month, value.day, 12);
+  /// Normalizes the given [date] as a UTC date at 12:00.
+  static DateTime normalizeDate(DateTime date) {
+    return DateTime.utc(date.year, date.month, date.day, 12);
   }
 
   /// Default Tempus constructor. Creates a new Tempus instance based on current time in the local
@@ -113,9 +104,7 @@ class Tempus {
   ///
   /// Throws a [FormatException] if the input cannot be parsed.
   /// The function parses a subset of ISO 8601 which includes the subset accepted by RFC 3339.
-  static Tempus parse(String date) {
-    return Tempus.fromDate(DateTime.parse(date));
-  }
+  static Tempus parse(String date) => Tempus.fromDate(DateTime.parse(date));
 
   /// Simultaneous getter and setter for the global locale.
   ///
@@ -156,29 +145,10 @@ class Tempus {
   /// Returns a grid-like list of [DateTime]s in a given month, with 35 items.
   ///
   /// [startOnMonday] will start the grid on Monday instead of Sunday.
-  static List<DateTime> datesInMonthGrid(
+  static List<DateTime> daysInMonth(
     DateTime month, {
     bool startOnMonday = false,
   }) {
-    int _getWeekdayNumber(DayOfWeek weekday) {
-      return DayOfWeek.values.indexOf(weekday) + 1;
-    }
-
-    int _getDaysBefore(DateTime firstDay, DayOfWeek startingWeekDay) {
-      return (firstDay.weekday + 7 - _getWeekdayNumber(startingWeekDay)) % 7;
-    }
-
-    int _getDaysAfter(DateTime lastDay, DayOfWeek startingWeekDay) {
-      final invertedStartingWeekday = 8 - _getWeekdayNumber(startingWeekDay);
-
-      var daysAfter = 7 - ((lastDay.weekday + invertedStartingWeekday) % 7) + 1;
-      if (daysAfter == 8) {
-        daysAfter = 1;
-      }
-
-      return daysAfter;
-    }
-
     final first = firstDayOfMonth(month);
     final daysBefore = _getDaysBefore(
         first, startOnMonday ? DayOfWeek.monday : DayOfWeek.sunday);
@@ -190,6 +160,15 @@ class Tempus {
 
     final lastToDisplay = last.add(Duration(days: daysAfter));
     return daysInRange(firstToDisplay, lastToDisplay).toList();
+  }
+
+  /// Returns a list of [DateTime]s in a given week, with 7 items ranging from
+  /// Sunday to Saturday.
+  static List<DateTime> daysInWeek(DateTime week) {
+    final first = firstDayOfWeek(week);
+    final last = lastDayOfWeek(week);
+
+    return daysInRange(first, last).toList();
   }
 
   /// Returns a [DateTime] for each day the given range.
@@ -208,7 +187,7 @@ class Tempus {
   static DateTime firstDayOfWeek(DateTime day, [bool startOnMonday = false]) {
     // Handle Daylight Savings by setting hour to 12:00 Noon
     // rather than the default of Midnight
-    day = DateTime.utc(day.year, day.month, day.day, 12);
+    day = normalizeDate(day);
 
     // Weekday is on a 1-7 scale Monday - Sunday,
     // This Calendar works from Sunday - Monday
@@ -220,12 +199,13 @@ class Tempus {
   static DateTime lastDayOfWeek(DateTime day, [bool endOnSunday = false]) {
     // Handle Daylight Savings by setting hour to 12:00 Noon
     // rather than the default of Midnight
-    day = DateTime.utc(day.year, day.month, day.day, 12);
+    var normDay = normalizeDate(day);
 
     // Weekday is on a 1-7 scale Monday - Sunday,
     // This Calendar's Week starts on Sunday
-    final sub = endOnSunday ? 6 - (day.weekday % 7) : 7 - (day.weekday % 7);
-    return day.add(Duration(days: sub));
+    final sub =
+        endOnSunday ? 6 - (normDay.weekday % 7) : 7 - (normDay.weekday % 7);
+    return normDay.add(Duration(days: sub));
   }
 
   /// Returns a new [DateTime] in the 1st day of the given month
@@ -253,7 +233,7 @@ class Tempus {
     } else {
       month--;
     }
-    return DateTime(year, month);
+    return normalizeDate(DateTime(year, month));
   }
 
   /// Returns a new [DateTime] in the next calendar month.
@@ -269,7 +249,7 @@ class Tempus {
     } else {
       month++;
     }
-    return DateTime(year, month);
+    return normalizeDate(DateTime(year, month));
   }
 
   /// Returns a new [DateTime] 7 days before the given date
@@ -290,16 +270,16 @@ class Tempus {
   /// Whether or not two dates are in the same week
   static bool isSameWeek(DateTime a, DateTime b) {
     // Handle Daylight Savings by setting hour to 12:00 Noon rather than the default of Midnight
-    a = DateTime.utc(a.year, a.month, a.day, 12);
-    b = DateTime.utc(b.year, b.month, b.day, 12);
+    final normA = normalizeDate(a);
+    final normB = normalizeDate(b);
 
-    var diff = a.difference(b).inDays;
+    var diff = normA.difference(normB).inDays;
     if (diff.abs() >= 7) {
       return false;
     }
 
-    var min = a.isBefore(b) ? a : b;
-    var max = a.isBefore(b) ? b : a;
+    var min = normA.isBefore(normB) ? normA : normB;
+    var max = normA.isBefore(normB) ? normB : normA;
 
     return max.weekday % 7 - min.weekday % 7 >= 0;
   }
@@ -393,8 +373,10 @@ class Tempus {
     return timeString;
   }
 
-  void normalize() {
+  /// Normalizes the internal [date] as a UTC date at 12:00.
+  DateTime normalize() {
     _date = DateTime.utc(_date.year, _date.month, _date.day, 12);
+    return _date;
   }
 
   /// Returns the inner [DateTime].
@@ -409,7 +391,10 @@ class Tempus {
   }
 
   String _addIdentifier(
-      String timeString, IdentifierPosition position, String identifier) {
+    String timeString,
+    IdentifierPosition position,
+    String identifier,
+  ) {
     switch (position) {
       case IdentifierPosition.prepend:
         return '${identifier} ${timeString}';
